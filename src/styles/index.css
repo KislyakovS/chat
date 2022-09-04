@@ -1,0 +1,25 @@
+@import './normalize.css';
+@import './variables.css';
+@import './global.css';
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.title {
+    margin: 0px;
+
+    font-size: 50px;
+
+    @media (max-width: 768px) {
+        font-size: 40px;
+    }
+
+    @media (max-width: 375px) {
+        font-size: 30px;
+    }
+}
