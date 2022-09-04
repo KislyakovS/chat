@@ -11,7 +11,7 @@
     "url": "git+https://github.com/KislyakovS/chat.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alexandr Kislyakov <kislyakov.sk@yandex.ru>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/KislyakovS/chat/issues"
@@ -21,6 +21,11 @@
     "node": ">=16"
   },
   "devDependencies": {
-    "parcel": "^2.7.0"
+    "autoprefixer": "^10.4.8",
+    "parcel": "^2.7.0",
+    "postcss": "^8.4.16",
+    "postcss-import": "^15.0.0",
+    "postcss-nested": "^5.0.6",
+    "postcss-url": "^10.1.3"
   }
 }
