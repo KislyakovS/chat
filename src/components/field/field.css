@@ -1,0 +1,39 @@
+.field {
+    --inset: 7px;
+
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        margin-bottom: var(--inset);
+
+        font-size: var(--small-font-size);
+        color: #999999;
+    }
+
+    &__input {
+        padding: var(--inset) 0px;
+
+        font-size: var(--primary-font-size);
+        font-family: var(--primary-font-family);
+        font-weight: var(--primary-font-weight);
+        color: var(--primary-color);
+
+        border: none;
+        border-bottom: 1px solid var(--accent-color);
+
+        outline: none;
+    }
+
+    &__input:invalid + &__error {
+        display: block;
+    }
+
+    &__error {
+        display: none;
+        margin-top: var(--inset);
+
+        font-size: var(--small-font-size);
+        color: var(--red);
+    }
+}
