@@ -23,3 +23,23 @@
         font-size: 30px;
     }
 }
+
+.greeting {
+    display: inline-block;
+
+    animation: wave .5s infinite;
+}
+
+@keyframes wave {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(20deg);
+    }
+}
