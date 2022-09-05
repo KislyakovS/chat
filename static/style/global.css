@@ -8,6 +8,8 @@ html, body {
 }
 
 body {
+    font-size: var(--primary-font-size);
+    font-weight: var(--primary-font-weight);
     font-family: var(--primary-font-family);
     color: var(--primary-color);
 }

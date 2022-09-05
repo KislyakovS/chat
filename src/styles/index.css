@@ -1,46 +1,10 @@
-@import './normalize.css';
-@import './fonts.css';
-@import './variables.css';
-@import './global.css';
+/* Core */
+@import '../../static/style/normalize.css';
+@import '../../static/style/fonts.css';
+@import '../../static/style/variables.css';
+@import '../../static/style/global.css';
 
-.wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-}
-
-.title {
-    margin: 0px;
-
-    font-size: 50px;
-
-    @media screen and (max-width: 768px) {
-        font-size: 40px;
-    }
-
-    @media screen and (max-width: 375px) {
-        font-size: 30px;
-    }
-}
-
-.greeting {
-    display: inline-block;
-
-    animation: wave .5s infinite;
-}
-
-@keyframes wave {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    50% {
-        transform: rotate(-20deg);
-    }
-
-    100% {
-        transform: rotate(20deg);
-    }
-}
+/* Components */
+@import '../components/button/button.css';
+@import '../components/link/link.css';
+@import '../components/field/field.css';

@@ -1,0 +1,15 @@
+:root {
+    --primary-font-size: 16px;
+    --small-font-size: 13px;
+    --primary-font-weight: 500;
+    --primary-font-family: 'Inter', sans-serif;
+
+    --primary-color: #1E1E1E;
+    --second-color: #ffffff;
+    --accent-color: #3369F3;
+    --active-color: #2957cb;
+    --red: #FF2F2F;
+
+    --transition-time: .3s;
+    --transition-animation: ease-out;
+}
