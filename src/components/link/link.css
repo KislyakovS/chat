@@ -1,0 +1,13 @@
+.link {
+    font-size: var(--small-font-size);
+    color: var(--accent-color);
+    text-decoration: none;
+
+    transition: color var(--transition-time) var(--transition-animation);
+
+    &:hover,
+    &:focus-visible {
+        color: var(--active-color);
+        text-decoration: underline;
+    }
+}
