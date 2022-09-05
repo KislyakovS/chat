@@ -1,0 +1,17 @@
+.button {
+    padding: 12px;
+
+    color: var(--second-color);
+
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 8px;
+    transition: background-color var(--transition-time) var(--transition-animation);
+
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+        background-color: var(--active-color);
+    }
+}
