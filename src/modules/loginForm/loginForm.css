@@ -1,0 +1,22 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+
+    &__field:not(:last-of-type) {
+        margin-bottom: 25px;
+    }
+
+    &__field:last-of-type {
+        margin-bottom: 30px;
+    }
+
+    &__submit {
+        margin-top: auto;
+    }
+
+    &__link {
+        margin-top: 15px;
+    }
+}
