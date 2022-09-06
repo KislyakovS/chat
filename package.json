@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Chat",
   "scripts": {
-    "dev": "parcel ./src/index.pug --port 3000 --dist-dir ./build",
-    "build": "parcel build ./src/index.pug --dist-dir ./build"
+    "dev": "parcel --port 3000 --dist-dir ./build",
+    "build": "parcel build --dist-dir ./build"
   },
   "repository": {
     "type": "git",
@@ -30,5 +30,9 @@
   },
   "dependencies": {
     "pug": "^3.0.2"
-  }
+  },
+  "source":  [
+    "src/pages/login.pug",
+    "src/index.pug"
+  ]
 }
