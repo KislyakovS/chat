@@ -1,0 +1,26 @@
+.back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+
+    background-color: #fbfbfb;
+    border-right: 1px solid var(--divider-color);
+
+    &__link {
+        --size: 28px;
+
+        display: block;
+        width: var(--size);
+        height: var(--size);
+
+        background-color: var(--accent-color);
+        border-radius: 50%;
+        transition: color var(--transition-time) var(--transition-animation);
+
+        &:hover,
+        &:focus-visible {
+            color: var(--active-color);
+        }
+    }
+}

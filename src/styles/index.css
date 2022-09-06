@@ -11,5 +11,10 @@
 @import '../components/h1/h1.css';
 @import '../components/error-page-message/error-page-message.css';
 @import '../components/form/form.css';
+@import '../components/back/back.css';
+@import '../components/profile-nav/profile-nav.css';
+
+/* Layout */
+@import '../layout/profile/profile.css';
 
 @import '../../static/style/global.css';

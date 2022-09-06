@@ -1,0 +1,11 @@
+include ../link/link.pug
+
+mixin profileNav()
+    nav.profile-nav
+        ul.profile-nav__list.list_divider
+            li
+                +link(href="/") Изменить данные
+            li
+                +link(href="/") Изменить пароль
+            li
+                +link(true)(href="/") Выйти
