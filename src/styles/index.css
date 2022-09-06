@@ -9,11 +9,10 @@
 @import '../components/field/field.css';
 @import '../components/box/box.css';
 @import '../components/h1/h1.css';
+@import '../components/errorPageMessage/errorPageMessage.css';
 
 /* Modules */
 @import '../modules/loginForm/loginForm.css';
 @import '../modules/signUpForm/signUpForm.css';
-
-
 
 @import '../../static/style/global.css';
