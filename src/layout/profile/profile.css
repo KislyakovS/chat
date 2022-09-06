@@ -1,0 +1,9 @@
+.page-profile {
+    display: flex;
+    min-height: 100vh;
+
+    &__content {
+        padding: 60px 20px;
+        flex-grow: 1;
+    }
+}
