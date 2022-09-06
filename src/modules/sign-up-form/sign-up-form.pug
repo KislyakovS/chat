@@ -3,13 +3,13 @@ include ../../components/button/button.pug
 include ../../components/link/link.pug
 
 mixin signUpForm()
-    form().sign-up-form
-        +field("Invalid mail", "sign-up-form__field w-100")(type="email" placeholder="Email" name="email") Email
-        +field("Invalid login", "sign-up-form__field w-100")(type="text" placeholder="Login" name="login") Login
-        +field("Invalid name", "sign-up-form__field w-100")(type="text" placeholder="First name" name="first_name") First name
-        +field("Invalid last name", "sign-up-form__field w-100")(type="text" placeholder="Second name" name="second_name") Second name
-        +field("Invalid last name", "sign-up-form__field w-100")(type="tel" placeholder="Phone" name="phone") Phone
-        +field("Invalid password", "sign-up-form__field w-100")(type="password" placeholder="Password" name="password") Password
-        +field("Passwords don't match", "sign-up-form__field w-100")(type="password" placeholder="Password" name="password") Password (again)
-        +button(type="submit").sign-up-form__submit.w-100 Sign up
-        +link(href="/pages/login").sign-up-form__link Sign in
+    form().form
+        +field("Invalid mail", "form__field w-100")(type="email" placeholder="Email" name="email") Email
+        +field("Invalid login", "form__field w-100")(type="text" placeholder="Login" name="login") Login
+        +field("Invalid name", "form__field w-100")(type="text" placeholder="First name" name="first_name") First name
+        +field("Invalid last name", "form__field w-100")(type="text" placeholder="Second name" name="second_name") Second name
+        +field("Invalid last name", "form__field w-100")(type="tel" placeholder="Phone" name="phone") Phone
+        +field("Invalid password", "form__field w-100")(type="password" placeholder="Password" name="password") Password
+        +field("Passwords don't match", "form__field w-100")(type="password" placeholder="Password" name="password") Password (again)
+        +button(type="submit").form__submit.w-100 Sign up
+        +link(href="/pages/login").form__link Sign in

@@ -10,9 +10,6 @@
 @import '../components/box/box.css';
 @import '../components/h1/h1.css';
 @import '../components/error-page-message/error-page-message.css';
-
-/* Modules */
-@import '../modules/login-form/login-form.css';
-@import '../modules/sign-up-form/sign-up-form.css';
+@import '../components/form/form.css';
 
 @import '../../static/style/global.css';
