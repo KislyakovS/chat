@@ -4,7 +4,7 @@ include ../../components/link/link.pug
 
 mixin loginForm()
     form().login-form
-        +field("Неверный логин", "login-form__field w-100")(type="text" placeholder="Login" name="login") Login
-        +field("Пароли не совпадают", "login-form__field w-100")(type="password" placeholder="Password" name="password") Password
+        +field("Invalid login", "login-form__field w-100")(type="text" placeholder="Login" name="login") Login
+        +field("Invalid password", "login-form__field w-100")(type="password" placeholder="Password" name="password") Password
         +button(type="submit").login-form__submit.w-100 Sign in
-        +link(href="/sign-up").login-form__link Create profile
+        +link(href="/pages/sign-up").login-form__link Create profile

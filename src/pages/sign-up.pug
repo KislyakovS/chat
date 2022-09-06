@@ -1,0 +1,19 @@
+extends ../layout/layout.pug
+
+include ../components/box/box.pug
+include ../components/h1/h1.pug
+
+include ../modules/signUpForm/signUpForm.pug
+
+block helmet
+    title Sign up
+    meta(name="description" content="Sign up chat.")
+
+block content
+    main
+        +box({
+            width: '340px',
+            height: '615px',
+        }).d-flex.flex-column.center
+            +h1.text-center.mb-40 Sign up
+            +signUpForm
