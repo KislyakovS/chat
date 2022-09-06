@@ -3,6 +3,8 @@ extends ./layout/layout.pug
 include ./components/button/button.pug
 include ./components/link/link.pug
 include ./components/field/field.pug
+include ./components/box/box.pug
+include ./components/errorPageMessage/errorPageMessage.pug
 
 block helmet
     title Hello, world! 👋
@@ -13,3 +15,6 @@ block content
         +link hello world
         +button hello world
         +field('Неверный логин') login
+        +box hello world
+
+        +errorPageMessage(404, "Не туда попали").center

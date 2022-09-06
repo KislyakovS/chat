@@ -1,0 +1,10 @@
+extends ../layout/layout.pug
+
+include ../components/errorPageMessage/errorPageMessage.pug
+
+block helmet
+    title The problem arose with us :(
+    meta(name="description" content="This is our problem. We will fix it soon :(")
+
+block content
+    +errorPageMessage(500, "We are already fixing").center
