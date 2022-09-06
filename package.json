@@ -33,6 +33,7 @@
   },
   "source":  [
     "src/pages/login.pug",
+    "src/pages/sign-up.pug",
     "src/index.pug"
   ]
 }
