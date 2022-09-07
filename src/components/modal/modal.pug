@@ -1,0 +1,7 @@
+include ../box/box.pug
+
+mixin modal(show, props = { width: '340px', height: '270px' })
+    - const showClass = show ? 'modal_show' : '';
+    .modal(class=showClass)
+        +box(props).block-center
+            block
