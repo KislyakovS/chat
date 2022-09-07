@@ -36,7 +36,7 @@
         margin: 0px 40px 0px 0px;
 
         font-size: 14px;
-        color: var(--gray);
+        color: var(--dark-gray);
 
         overflow: hidden;
         text-overflow: ellipsis;
@@ -57,7 +57,7 @@
         margin-left: 15px;
 
         font-size: var(--small-font-size);
-        color: var(--gray);
+        color: var(--dark-gray);
     }
 
     &_selected &__time {

@@ -10,8 +10,10 @@
     --accent-color: #3369F3;
     --active-color: #2957cb;
     --second-accent-color: #ff2f2f;
-    --divider-color: #eaeaea;
-    --gray: #999999;
+    --dark-gray: #999999;
+    --light-gray: #eaeaea;
+
+    --divider-color: var(--light-gray);
 
     --transition-time: .3s;
     --transition-animation: ease-out;
