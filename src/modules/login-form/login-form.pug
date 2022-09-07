@@ -4,7 +4,7 @@ include ../../components/link/link.pug
 
 mixin loginForm()
     form().form
-        +field("Invalid login", "form__field w-100")(type="text" placeholder="Login" name="login") Login
-        +field("Invalid password", "form__field w-100")(type="password" placeholder="Password" name="password") Password
-        +button(type="submit").form__submit.w-100 Sign in
-        +link(href="/pages/sign-up").form__link Create profile
+        +field('Invalid login', 'form__field w-100')(type='text' placeholder='Login' name='login') Login
+        +field('Invalid password', 'form__field w-100')(type='password' placeholder='Password' name='password') Password
+        +button(type='submit').form__submit.w-100 Sign in
+        +link(href='/pages/sign-up').form__link Create profile

@@ -4,7 +4,7 @@ include ../components/error-page-message/error-page-message.pug
 
 block helmet
     title The problem arose with us :(
-    meta(name="description" content="This is our problem. We will fix it soon :(")
+    meta(name='description' content='This is our problem. We will fix it soon :(')
 
 block content
-    +errorPageMessage(500, "We are already fixing").center
+    +errorPageMessage(500, 'We are already fixing').center

@@ -3,6 +3,6 @@ mixin field(error, className)
         unless !block
             span.field__label
                 block
-        input.field__input(type="text" placeholder="login")&attributes(attributes)
+        input.field__input(type='text' placeholder='login')&attributes(attributes)
         unless !error
             sapn.field__error=error
