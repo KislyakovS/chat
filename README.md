@@ -8,7 +8,7 @@ npm install
 
 Сonfig to start the server (.env):
 ```
-PORT /* the port on which the server will be started */
+PORT = /* the port on which the server will be started */
 STATIC_DIR_NAME = /* name of the folder with static files */
 ```
 
