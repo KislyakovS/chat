@@ -14,20 +14,16 @@ body {
     color: var(--primary-color);
 }
 
-.w-100 {
-    width: 100%;
-}
-
-.mb-40 {
-    margin-bottom: 40px;
-}
-
 .d-flex {
     display: flex;
 }
 
 .flex-column {
     flex-direction: column;
+}
+
+.flex-space-between {
+    justify-content: space-between;
 }
 
 .center {
@@ -41,6 +37,13 @@ body {
     text-align: center;
 }
 
+.list_reset {
+    padding: 0px;
+    margin: 0px;
+
+    list-style: none;
+}
+
 .list_divider {
     li {
         padding: 10px 0px;
@@ -49,4 +52,12 @@ body {
             border-bottom: 1px solid var(--divider-color);
         }
     }
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
 }

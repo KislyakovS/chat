@@ -12,7 +12,8 @@
 @import '../components/error-page-message/error-page-message.css';
 @import '../components/form/form.css';
 @import '../components/back/back.css';
-@import '../components/profile-nav/profile-nav.css';
+@import '../components/profile-info/profile-info.css';
+@import '../components/avatar/avatar.css';
 
 /* Layout */
 @import '../layout/profile/profile.css';

@@ -1,0 +1,4 @@
+mixin avatar(size)
+    - var s = size || '50px';
+    - var src = attributes.src ? attributes.src : '/static/image/default-avatar.png';
+    img.avatar(style={ width: s, height: s } src=src )&attributes(attributes)
