@@ -10,7 +10,9 @@
     &__link {
         --size: 28px;
 
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: var(--size);
         height: var(--size);
 
