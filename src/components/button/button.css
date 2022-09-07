@@ -14,4 +14,17 @@
     &:focus-visible {
         background-color: var(--active-color);
     }
+
+    &_round {
+        --size: 28px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: var(--size);
+        height: var(--size);
+        padding: 0px;
+
+        border-radius: 50%;
+    }
 }

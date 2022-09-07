@@ -1,4 +1,6 @@
+include ../button/button.pug
+
 mixin back()
     .back
-        a(aria-label='go back').back__link&attributes(attributes)
+        +button(true)(href="./login.pug" aria-label='go back')
             include ../../../static/icons/arrow-left.svg

@@ -2,7 +2,7 @@ include ../avatar/avatar.pug
 
 mixin dialog(isSelected)
     - const classSelected = isSelected ? 'dialog_selected' : ''
-    a.dialog.d-flex.f-ai-c(tabindex="1" class=classSelected)&attributes(attributes)
+    a.dialog.d-flex.f-ai-c(tabindex='1' class=classSelected)&attributes(attributes)
         +avatar.dialog__avatar
         div.dialog__main.f-grow
             header.dialog__header.d-flex.f-jc-sb
