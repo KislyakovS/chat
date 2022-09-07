@@ -16,6 +16,7 @@
 @import '../components/profile-info/profile-info.css';
 @import '../components/avatar/avatar.css';
 @import '../components/change-avatar/change-avatar.css';
+@import '../components/dialog/dialog.css';
 
 /* Layout */
 @import '../layout/profile/profile.css';
