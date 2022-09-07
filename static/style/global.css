@@ -54,10 +54,26 @@ body {
     }
 }
 
+.list_divider li,
+.item-divider {
+    padding: 10px 0px;
+
+    &:not(:last-of-type) {
+        border-bottom: 1px solid var(--divider-color);
+    }
+}
+
 .w-100 {
     width: 100%;
 }
 
 .mb-40 {
     margin-bottom: 40px;
+}
+
+.input_reset {
+    padding: 0px;
+    margin: 0px;
+
+    border: none;
 }

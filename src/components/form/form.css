@@ -20,3 +20,24 @@
         margin-top: 15px;
     }
 }
+
+.form_tabel {
+    .from__field {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0px;
+
+        input {
+            color: var(--gray);
+            text-align: right;
+        }
+    }
+
+    .from__submit {
+        display: block;
+        width: 280px;
+        margin: 0px auto;
+        margin-top: 80px;
+    }
+}

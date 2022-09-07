@@ -37,6 +37,7 @@
     "src/pages/404.pug",
     "src/pages/500.pug",
     "src/pages/profile.pug",
+    "src/pages/change-password.pug",
     "src/index.pug"
   ]
 }
