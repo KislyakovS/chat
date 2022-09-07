@@ -18,6 +18,7 @@
 @import '../components/change-avatar/change-avatar.css';
 @import '../components/dialog/dialog.css';
 @import '../components/modal/modal.css';
+@import '../components/search/search.css';
 
 /* Modules */
 @import '../modules/send-message-form/send-message-form.css';
