@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1;
 
     &__field:not(:last-of-type) {
         margin-bottom: 15px;
@@ -14,10 +13,6 @@
 
     &__submit {
         margin-top: auto;
-    }
-
-    &__link {
-        margin-top: 15px;
     }
 }
 

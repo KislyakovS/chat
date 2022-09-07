@@ -2,6 +2,7 @@ extends ../layout/layout.pug
 
 include ../components/box/box.pug
 include ../components/h1/h1.pug
+include ../components/link/link.pug
 
 include ../modules/sign-up-form/sign-up-form.pug
 
@@ -14,6 +15,7 @@ block content
         +box({
             width: '340px',
             height: '615px',
-        }).d-flex.flex-column.center
-            +h1.text-center.mb-40 Sign up
-            +signUpForm
+        }).d-flex.f-column.f-ai-c.block-center
+            +h1.mb-40 Sign up
+            +signUpForm.f-grow.w-100
+            +link(href='login.pug').mt-15 Sign in

@@ -2,6 +2,7 @@
 @import '../../static/style/normalize.css';
 @import '../../static/style/fonts.css';
 @import '../../static/style/variables.css';
+@import '../../static/style/global.css';
 
 /* Components */
 @import '../components/button/button.css';
@@ -19,4 +20,5 @@
 /* Layout */
 @import '../layout/profile/profile.css';
 
-@import '../../static/style/global.css';
+/* Atomic */
+@import '../../static/style/atomic.css';
