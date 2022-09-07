@@ -36,6 +36,7 @@
     "src/pages/sign-up.pug",
     "src/pages/404.pug",
     "src/pages/500.pug",
+    "src/pages/profile.pug",
     "src/index.pug"
   ]
 }
