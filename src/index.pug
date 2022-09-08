@@ -1,0 +1,18 @@
+extends ./layout/layout.pug
+
+include ./components/dialogs/dialogs.pug
+include ./components/modal/modal.pug
+include ./components/search/search.pug
+
+include ./modules/send-message-form/send-message-form.pug
+
+block helmet
+    title Sign in
+    meta(name='description' content='Sign in chat.')
+
+block content
+    h1 Hello world
+    +search
+    +dialogs
+    +sendMessageForm
+    +modal()
