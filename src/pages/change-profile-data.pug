@@ -1,0 +1,11 @@
+extends ../layout/profile/profile.pug
+
+include ../modules/change-profile-data-form/change-profile-data-form.pug
+
+
+block helmet
+    title Change profile data
+    meta(name='description' content='Change profile data')
+
+block profile
+    +changeProfileDataForm

@@ -1,0 +1,35 @@
+.change-avatar {
+    text-align: center;
+
+    &__button {
+        --size: 130px;
+
+        position: relative;
+
+        width: var(--szie);
+        height: var(--size);
+
+        overflow: hidden;
+        border-radius: 50%;
+
+        cursor: pointer;
+    }
+
+    &__button:hover &__overlay,
+    &__button:focus-visible &__overlay {
+        display: flex;
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0px 0px 0px 0px;
+
+        display: none;
+        align-items: center;
+        justify-content: center;
+
+        color: var(--second-color);
+
+        background-color: rgba(0, 0, 0, .5);
+    }
+}

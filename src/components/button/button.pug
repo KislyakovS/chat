@@ -1,0 +1,8 @@
+mixin button(isRound)
+    - const classRound = isRound ? 'button_round' : ''
+    if attributes.href
+        a.button(class=classRound)&attributes(attributes)
+            block
+    else
+        button.button(type='button' class=classRound)&attributes(attributes)
+            block

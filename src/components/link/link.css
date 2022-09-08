@@ -1,0 +1,14 @@
+.link {
+    font-size: var(--small-font-size);
+    color: var(--accent-color);
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+        text-decoration: underline;
+    }
+
+    &_accent {
+        color: var(--second-accent-color);
+    }
+}
