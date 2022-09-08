@@ -1,0 +1,27 @@
+include ../../components/button/button.pug
+include ../../components/change-avatar/change-avatar.pug
+
+
+mixin changeProfileDataForm()
+    form.form_tabel
+        +changeAvatar.mb-40
+        label.from__field.item-divider
+            span Email
+            input(type='email' name='email' value='pochta@yandex.ru').reset
+        label.from__field.item-divider
+            span Login
+            input(type='name' name='login' value='ivanivanov').reset
+        label.from__field.item-divider
+            span Name
+            input(type='text' name='first_name' value='ivan').reset
+        label.from__field.item-divider
+            span Last name
+            input(type='text' name='second_name' value='ivanov').reset
+        label.from__field.item-divider
+            span Name in chat
+            input(type='text' name='display_name' value='ivan-2000').reset
+        label.from__field.item-divider
+            span Phone
+            input(type='tel' name='phone' value='+7 (909) 967 30 30').reset
+
+        +button(type='submit').from__submit Save

@@ -1,0 +1,21 @@
+extends ../layout/layout.pug
+
+include ../components/box/box.pug
+include ../components/h1/h1.pug
+include ../components/link/link.pug
+
+include ../modules/login-form/login-form.pug
+
+block helmet
+    title Sign in
+    meta(name='description' content='Sign in chat.')
+
+block content
+    main
+        +box({
+            width: '340px',
+            height: '460px',
+        }).d-flex.f-column.f-ai-c.block-center
+            +h1.mb-40 Sign in
+            +loginForm.f-grow.w-100
+            +link(href='sign-up.pug').mt-15 Create profile

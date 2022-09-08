@@ -1,0 +1,10 @@
+extends ../layout/layout.pug
+
+include ../components/error-page-message/error-page-message.pug
+
+block helmet
+    title Not found :(
+    meta(name='description' content='We could not find this page :(')
+
+block content
+    +errorPageMessage(404, 'Got it wrong').center

@@ -1,0 +1,7 @@
+include ../avatar/avatar.pug
+
+mixin changeAvatar()
+    .change-avatar&attributes(attributes)
+        button.reset.change-avatar__button(type='button')
+            +avatar('130px')
+            .change-avatar__overlay Поменять аватар

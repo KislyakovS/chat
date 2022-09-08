@@ -1,0 +1,11 @@
+include ../avatar/avatar.pug
+
+mixin profileInfo()
+    div.profile-info&attributes(attributes)
+        +avatar('130px')(alt='user\'s photo').mb-40
+        ul.w-100.reset
+            - const informations = [{ label: 'Email', value: 'pochta@yandex.ru' },{ label: 'Login', value: 'ivanivanov' },{ label: 'Name', value: 'ivan' },{ label: 'Last name', value: 'ivanov' },{ label: 'Name in chat', value: 'ivan-2000' },{ label: 'Phone', value: '+7 (909) 967 30 30' }]
+            each data in informations
+                li.d-flex.f-jc-sb.item-divider
+                    span= data.label
+                    span.profile-info__value= data.value

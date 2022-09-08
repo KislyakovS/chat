@@ -1,0 +1,9 @@
+.back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+
+    background-color: #fbfbfb;
+    border-right: 1px solid var(--divider-color);
+}

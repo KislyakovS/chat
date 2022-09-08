@@ -1,0 +1,6 @@
+.title {
+    margin: 0px;
+
+    font-size: var(--large-font-size);
+    color: var(--primary-color);
+}

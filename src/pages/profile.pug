@@ -1,0 +1,12 @@
+extends ../layout/profile/profile.pug
+
+include ../components/profile-nav/profile-nav.pug
+include ../components/profile-info/profile-info.pug
+
+block helmet
+    title Profile
+    meta(name='description' content='Profile Information and Setup')
+
+block profile
+    +profileInfo.mb-40
+    +profileNav
