@@ -1,3 +1,3 @@
-mixin box(props = {width, height})
-    div.box(style={width: props.width, 'min-height': props.height})&attributes(attributes)
+mixin box(width = '400px', height = 'auto')
+    div.box(style={ width: width, 'min-height': height })&attributes(attributes)
         block

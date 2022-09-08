@@ -1,4 +1,3 @@
-mixin avatar(size)
-    - const s = size || '50px';
+mixin avatar(size = '50px')
     - const src = attributes.src ? attributes.src : '/static/image/default-avatar.webp';
     img.avatar(style={ width: s, height: s } src=src )&attributes(attributes)
