@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Chat",
   "scripts": {
-    "start": "node ./server.js",
+    "start": "ts-node ./server.ts",
     "dev": "npm run clear:build && parcel --port 3000 --dist-dir ./build",
     "build": "npm run clear:build && parcel build --dist-dir ./build",
     "clear:build": "rimraf ./build",
