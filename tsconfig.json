@@ -3,7 +3,7 @@
     "outDir": "build",
     "target": "es2020",
     "declaration": false,
-    "module": "es2020",
+    "module": "ES6",
     "strictNullChecks": true,
     "sourceMap": true,
     "moduleResolution": "node",
