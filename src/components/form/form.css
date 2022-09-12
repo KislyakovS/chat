@@ -24,7 +24,7 @@
         margin: 0px;
 
         input {
-            color: var(--dark-gray);
+            color: var(--dark-gray-color);
             text-align: right;
         }
     }

@@ -8,7 +8,7 @@
         margin-bottom: var(--inset);
 
         font-size: var(--small-font-size);
-        color: var(--dark-gray);
+        color: var(--dark-gray-color);
     }
 
     &__input {

@@ -8,10 +8,15 @@ html, body {
 }
 
 body {
-    font-size: var(--primary-font-size);
+    /* font-size: var(--primary-font-size);
     font-weight: var(--primary-font-weight);
     font-family: var(--primary-font-family);
-    color: var(--primary-color);
+    color: var(--primary-color); */
+
+	font-family: var(--font-family-body);
+	font-weight: var(--font-weight);
+
+	color: var(--primary-color);
 }
 
 .item-divider {

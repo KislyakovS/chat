@@ -4,6 +4,6 @@
     align-items: center;
 
     &__value {
-        color: var(--dark-gray);
+        color: var(--dark-gray-color);
     }
 }
