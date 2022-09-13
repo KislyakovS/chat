@@ -11,7 +11,6 @@
 @import '../components/box/box.css';
 @import '../components/h1/h1.css';
 @import '../components/error-page-message/error-page-message.css';
-@import '../components/form/form.css';
 @import '../components/back/back.css';
 @import '../components/profile-info/profile-info.css';
 @import '../components/avatar/avatar.css';
@@ -19,12 +18,14 @@
 @import '../components/dialog/dialog.css';
 @import '../components/modal/modal.css';
 @import '../components/search-filed/search-filed.css';
+@import './form.css';
+
+/* Layout */
+@import '../layout/profile/profile.css';
 
 /* Modules */
 @import '../modules/send-message-form/send-message-form.css';
 
-/* Layout */
-@import '../layout/profile/profile.css';
 
 /* Atomic */
 @import '../../static/style/atomic.css';
