@@ -1,0 +1,4 @@
+mixin message(time, isIncoming = false)
+	span(class=isIncoming && 'message_incoming').message
+		block
+		time.message__time=time
