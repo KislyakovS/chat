@@ -53,6 +53,7 @@
     "src/pages/500.pug",
     "src/pages/profile.pug",
     "src/pages/change-password.pug",
-    "src/pages/change-profile-data.pug"
+    "src/pages/change-profile-data.pug",
+    "src/pages/index.pug"
   ]
 }

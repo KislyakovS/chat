@@ -16,9 +16,12 @@
 @import '../components/avatar/avatar.css';
 @import '../components/change-avatar/change-avatar.css';
 @import '../components/dialog/dialog.css';
+@import '../components/dialogs/dialogs.css';
 @import '../components/modal/modal.css';
-@import '../components/search-filed/search-filed.css';
+@import '../components/search-field/search-field.css';
 @import '../components/message/message.css';
+@import '../components/chat-list/chat-list.css';
+@import '../components/user/user.css';
 @import './form.css';
 
 /* Layout */

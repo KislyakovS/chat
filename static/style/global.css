@@ -8,11 +8,6 @@ html, body {
 }
 
 body {
-    /* font-size: var(--primary-font-size);
-    font-weight: var(--primary-font-weight);
-    font-family: var(--primary-font-family);
-    color: var(--primary-color); */
-
 	font-family: var(--font-family-body);
 	font-weight: var(--font-weight);
 
@@ -25,4 +20,38 @@ body {
     &:not(:last-of-type) {
         border-bottom: 1px solid var(--divider-color);
     }
+}
+
+.aside {
+	padding: 11px;
+
+	border-right: 1px solid var(--divider-color);
+}
+
+
+.chat {
+	display: flex;
+	flex-direction: column;
+	padding: 11px 20px;
+
+	&__user {
+		padding-bottom: 11px;
+		border-bottom: 1px solid var(--divider-color);
+		margin-bottom: auto;
+	}
+
+	&__send-form {
+		padding-top: 11px;
+		margin-top: 20px;
+
+		border-top: 1px solid var(--divider-color);
+	}
+}
+
+
+.search {
+	padding: 11px 0px;
+	margin-bottom: 11px;
+
+	border-bottom: 1px solid var(--divider-color);
 }

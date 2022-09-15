@@ -1,0 +1,27 @@
+extends ../layout/layout.pug
+
+include ../components/message/message.pug
+include ../components/dialogs/dialogs.pug
+include ../components/chat-list/chat-list.pug
+include ../components/search-field/search-field.pug
+include ../components/link/link.pug
+include ../components/avatar/avatar.pug
+include ../components/user/user.pug
+
+include ../modules/send-message-form/send-message-form.pug
+
+block helmet
+	title Sign in
+	meta(name='description' content='Sign in chat.')
+
+block content
+	main.h-100.d-flex
+		aside.aside.d-flex.f-column
+			+user('Alexander')(href='./profile.pug')
+			div.search
+				+searchField.w-100
+			+dialogs
+		div.chat.f-grow
+			+user('Ivan').chat__user
+			+chatList
+			+sendMessageForm.chat__send-form

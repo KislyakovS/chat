@@ -61,6 +61,10 @@ button.reset {
     width: 100%;
 }
 
+.h-100 {
+	height: 100vh;
+}
+
 /* others */
 
 .block-center {
