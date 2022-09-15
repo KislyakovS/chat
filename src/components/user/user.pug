@@ -1,0 +1,6 @@
+include ../avatar/avatar.pug
+
+mixin user(name)
+	a.user&attributes(attributes)
+		+avatar('35px')
+		span= name
