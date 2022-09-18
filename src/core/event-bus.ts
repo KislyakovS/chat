@@ -1,33 +1,29 @@
 import type { VoidFunction } from '../types';
 
-export enum EventName {
-	init = 'init'
-}
-
 type Listeners = Record<string, VoidFunction[]>;
 
-class EventBus {
+export default class EventBus<T extends string> {
 	private listeners: Listeners = {};
 
-	private notEventInListeners(eventName: EventName) {
+	private _notEventInListeners(eventName: T) {
 		return !this.listeners[eventName];
 	}
 
-	private throwErrorNoEvent(eventName: EventName): never {
+	private _throwErrorNoEvent(eventName: T): never {
 		throw new Error(`There is no event named '${eventName}'`);
 	}
 
-	public on(eventName: EventName, callback: VoidFunction) {
-		if (this.notEventInListeners(eventName)) {
+	public on(eventName: T, callback: VoidFunction) {
+		if (this._notEventInListeners(eventName)) {
 			this.listeners[eventName] = [];
 		}
 
 		this.listeners[eventName].push(callback);
 	}
 
-	public off(eventName: EventName, callback: VoidFunction) {
-		if (this.notEventInListeners(eventName)) {
-			this.throwErrorNoEvent(eventName);
+	public off(eventName: T, callback: VoidFunction) {
+		if (this._notEventInListeners(eventName)) {
+			this._throwErrorNoEvent(eventName);
 		}
 
 		this.listeners[eventName] = this.listeners[eventName].filter(
@@ -35,13 +31,11 @@ class EventBus {
 		);
 	}
 
-	public emite(eventName: EventName, ...args: unknown[]) {
-		if (this.notEventInListeners(eventName)) {
-			this.throwErrorNoEvent(eventName);
+	public emite(eventName: T, ...args: unknown[]) {
+		if (this._notEventInListeners(eventName)) {
+			this._throwErrorNoEvent(eventName);
 		}
 
 		this.listeners[eventName].forEach((listener) => listener(...args));
 	}
 }
-
-export default new EventBus();
