@@ -1,5 +1,7 @@
 import EventBus from './event-bus';
 
+import { compileTemplatePugToElement } from '../utils';
+
 import type { ElementEventName } from '../types';
 
 type EventName = keyof typeof Component.eventName;
@@ -18,11 +20,13 @@ export default abstract class Component<T extends DefaultProps> {
 	private readonly eventBus: EventBus<EventName>;
 	protected props: T;
 
+	private readonly _template: string;
 	private _element: HTMLElement;
 
-	constructor(props: T) {
+	constructor(template: string, props: T) {
 		this.eventBus = new EventBus();
 		this.props = this._makePropsProxy(props);
+		this._template = template;
 
 		this._registerEvents();
 
@@ -48,7 +52,7 @@ export default abstract class Component<T extends DefaultProps> {
 	}
 
 	private _render() {
-		this._element = this.render();
+		this._element = this._compileTemplate();
 
 		this._addEventListener();
 
@@ -58,13 +62,17 @@ export default abstract class Component<T extends DefaultProps> {
 	private _rerender() {
 		this._removeEventListener();
 
-		const element = this.render();
-		this._element.replaceWith(element);
-		this._element = element;
+		const newElement = this._compileTemplate();
+		this._element.replaceWith(newElement);
+		this._element = newElement;
 
 		this._addEventListener();
 
 		this.eventBus.emite(Component.eventName.componentDidUpdate);
+	}
+
+	private _compileTemplate() {
+		return compileTemplatePugToElement(this._template, this.props);
 	}
 
 	private _componentDidMount() {
@@ -107,7 +115,6 @@ export default abstract class Component<T extends DefaultProps> {
 		return this._element;
 	}
 
-	protected abstract render(): HTMLElement;
 	protected componentDidMount?(): void;
 	protected componentDidUpdate?(): void;
 }

@@ -1,7 +1,5 @@
 import Component, { DefaultProps } from '../../core/component';
 
-import { compileTemplatePugToElement } from '../../utils';
-
 import template from './button.tmpl';
 
 type Props = DefaultProps & {
@@ -13,10 +11,6 @@ type Props = DefaultProps & {
 
 export default class Button extends Component<Props> {
 	constructor(props: Props) {
-		super(props);
-	}
-
-	protected render() {
-		return compileTemplatePugToElement(template, this.props);
+		super(template, props);
 	}
 }

@@ -52,14 +52,19 @@
   "dependencies": {
     "pug": "^3.0.2"
   },
-  "source": [
-    "src/pages/login.pug",
-    "src/pages/sign-up.pug",
-    "src/pages/404.pug",
-    "src/pages/500.pug",
-    "src/pages/profile.pug",
-    "src/pages/change-password.pug",
-    "src/pages/change-profile-data.pug",
-    "src/pages/index.pug"
-  ]
+  "targets": {
+    "frontend": {
+      "context": "browser",
+      "source": [
+        "src/pages/login.pug",
+        "src/pages/sign-up.pug",
+        "src/pages/404.pug",
+        "src/pages/500.pug",
+        "src/pages/profile.pug",
+        "src/pages/change-password.pug",
+        "src/pages/change-profile-data.pug",
+        "src/pages/index.pug"
+      ]
+    }
+  }
 }
