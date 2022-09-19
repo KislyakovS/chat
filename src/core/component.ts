@@ -1,11 +1,18 @@
 import EventBus from './event-bus';
 
-type EventName = keyof typeof Component.eventName;
+import type { ElementEventName } from '../types';
 
-export default abstract class Component<T> {
+type EventName = keyof typeof Component.eventName;
+export type DefaultProps = {
+	events?: Partial<Record<ElementEventName, EventListenerOrEventListenerObject>>
+}
+
+export default abstract class Component<T extends DefaultProps> {
 	static eventName = {
 		render: 'render',
+		rerender: 'rerender',
 		componentDidMount: 'componentDidMount',
+		componentDidUpdate: 'componentDidUpdate'
 	} as const;
 
 	private readonly eventBus: EventBus<EventName>;
@@ -22,22 +29,70 @@ export default abstract class Component<T> {
 		this.eventBus.emite(Component.eventName.render);
 	}
 
-	private _makePropsProxy(props: T): T {
-		// TODO: Finish the proxy method
-		return props;
+	private _makePropsProxy(props: T) {
+		return new Proxy(props, {
+			set: (target, key, value) => {
+				target[key as keyof T] = value;
+
+				this.eventBus.emite(Component.eventName.rerender);
+				return true;
+			}
+		});
 	}
 
 	private _registerEvents() {
 		this.eventBus.on(Component.eventName.render, this._render.bind(this));
+		this.eventBus.on(Component.eventName.rerender, this._rerender.bind(this));
 		this.eventBus.on(Component.eventName.componentDidMount, this._componentDidMount.bind(this));
+		this.eventBus.on(Component.eventName.componentDidUpdate, this._componentDidUpdate.bind(this));
 	}
 
 	private _render() {
 		this._element = this.render();
+
+		this._addEventListener();
+
+		this.eventBus.emite(Component.eventName.componentDidMount);
+	}
+
+	private _rerender() {
+		this._removeEventListener();
+
+		const element = this.render();
+		this._element.replaceWith(element);
+		this._element = element;
+
+		this._addEventListener();
+
+		this.eventBus.emite(Component.eventName.componentDidUpdate);
 	}
 
 	private _componentDidMount() {
-		this.componentDidMount && this.componentDidMount(this.props);
+		this.componentDidMount && this.componentDidMount();
+	}
+
+	private _componentDidUpdate() {
+		this.componentDidUpdate && this.componentDidUpdate();
+	}
+
+	private _addEventListener() {
+		if (!this.props.events) {
+			return;
+		}
+
+		Object.entries(this.props.events).forEach(([eventName, listener]) => {
+			this.element.addEventListener(eventName, listener);
+		});
+	}
+
+	private _removeEventListener() {
+		if (!this.props.events) {
+			return;
+		}
+
+		Object.entries(this.props.events).forEach(([eventName, listener]) => {
+			this.element.removeEventListener(eventName, listener);
+		});
 	}
 
 	public setProps(nextProps: Partial<T>) {
@@ -45,7 +100,7 @@ export default abstract class Component<T> {
 			return;
 		}
 
-		this.props = { ...this.props, ...nextProps };
+		Object.assign(this.props, nextProps);
 	}
 
 	public get element() {
@@ -53,5 +108,6 @@ export default abstract class Component<T> {
 	}
 
 	protected abstract render(): HTMLElement;
-	protected componentDidMount?(oldProps: T): void;
+	protected componentDidMount?(): void;
+	protected componentDidUpdate?(): void;
 }
