@@ -18,11 +18,10 @@ export default abstract class Component<T extends DefaultProps> {
 		componentDidMount: 'componentDidMount',
 		componentDidUpdate: 'componentDidUpdate'
 	} as const;
+	public readonly id = uuidv4();
 
 	private readonly eventBus: EventBus<EventName>;
 	protected props: T;
-
-	public readonly id = uuidv4();
 	private readonly _template: string;
 	private _element: HTMLElement;
 
