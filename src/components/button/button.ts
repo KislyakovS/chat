@@ -6,7 +6,7 @@ type Props = DefaultProps & {
 	href?: string,
 	type?: 'button' | 'submit' | 'reset',
 	isRound?: boolean,
-	children: string,
+	text: string,
 }
 
 export default class Button extends Component<Props> {

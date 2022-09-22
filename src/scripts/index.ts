@@ -1,27 +1,46 @@
-import Button from '../components/button';
+// import Button from '../components/button';
+
+import Component from "../core/component";
+import Button from "../components/button";
+
+import type { DefaultProps } from "../core/component";
+
+const template = `<div><h1>Hello</h1>+Button+Button+Button</div>`;
+
+class Blog extends Component<DefaultProps> {
+	constructor(props: DefaultProps) {
+		super(template, props);
+	}
+}
 
 const buttonEventClick = new Button({
-	children: 'Click me!',
+	text: 'Click me!',
 	events: {
 		click: () => console.log('Click button!')
 	}
 });
 const buttonLink = new Button({
-	children: 'Link!',
+	text: 'Link!',
 	href: '/',
 });
 const buttonUpdate = new Button({
-	children: 'Update first button',
+	text: 'Update first button',
 	events: {
 		click: () => buttonEventClick.setProps({
-			children: 'No events!',
+			text: 'No events!',
 			events: {}
 		})
 	}
 });
 
+const blog = new Blog({
+	children: [
+		buttonEventClick, buttonLink, buttonUpdate
+	]
+})
+
 const main = document.querySelector('main') as HTMLElement;
 main.classList.remove('h-100', 'd-flex')
 main.innerHTML = '';
 
-main.append(buttonEventClick.element, buttonLink.element, buttonUpdate.element);
+main.append(blog.element);

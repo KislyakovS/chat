@@ -1,12 +1,14 @@
-import EventBus from './event-bus';
+import { v4 as uuidv4 } from 'uuid';
 
-import { compileTemplatePugToElement } from '../utils';
+import EventBus from './event-bus';
+import { compileTemplatePug } from '../utils';
 
 import type { ElementEventName } from '../types';
 
 type EventName = keyof typeof Component.eventName;
 export type DefaultProps = {
 	events?: Partial<Record<ElementEventName, EventListenerOrEventListenerObject>>
+	children?: Component<DefaultProps>[]
 }
 
 export default abstract class Component<T extends DefaultProps> {
@@ -20,6 +22,7 @@ export default abstract class Component<T extends DefaultProps> {
 	private readonly eventBus: EventBus<EventName>;
 	protected props: T;
 
+	public readonly id = uuidv4();
 	private readonly _template: string;
 	private _element: HTMLElement;
 
@@ -52,7 +55,7 @@ export default abstract class Component<T extends DefaultProps> {
 	}
 
 	private _render() {
-		this._element = this._compileTemplate();
+		this._element = this._compile();
 
 		this._addEventListener();
 
@@ -62,7 +65,7 @@ export default abstract class Component<T extends DefaultProps> {
 	private _rerender() {
 		this._removeEventListener();
 
-		const newElement = this._compileTemplate();
+		const newElement = this._compile();
 		this._element.replaceWith(newElement);
 		this._element = newElement;
 
@@ -71,8 +74,8 @@ export default abstract class Component<T extends DefaultProps> {
 		this.eventBus.emite(Component.eventName.componentDidUpdate);
 	}
 
-	private _compileTemplate() {
-		return compileTemplatePugToElement(this._template, this.props);
+	private _compile() {
+		return compileTemplatePug(this._template, this.props);
 	}
 
 	private _componentDidMount() {
@@ -81,6 +84,8 @@ export default abstract class Component<T extends DefaultProps> {
 
 	private _componentDidUpdate() {
 		this.componentDidUpdate && this.componentDidUpdate();
+
+		this.props.children?.forEach((child) => child.componentDidUpdate && child.componentDidUpdate());
 	}
 
 	private _addEventListener() {
