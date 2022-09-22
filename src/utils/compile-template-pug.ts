@@ -19,4 +19,4 @@ export default <T extends Pick<DefaultProps, 'children'>>(template: string, prop
 	});
 
 	return fragment.content.children[0] as HTMLElement;
-}
+};

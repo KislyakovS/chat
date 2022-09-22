@@ -16,7 +16,7 @@ export default abstract class Component<T extends DefaultProps> {
 		render: 'render',
 		rerender: 'rerender',
 		componentDidMount: 'componentDidMount',
-		componentDidUpdate: 'componentDidUpdate'
+		componentDidUpdate: 'componentDidUpdate',
 	} as const;
 	public readonly id = uuidv4();
 
@@ -42,7 +42,7 @@ export default abstract class Component<T extends DefaultProps> {
 
 				this.eventBus.emite(Component.eventName.rerender);
 				return true;
-			}
+			},
 		});
 	}
 
@@ -78,13 +78,13 @@ export default abstract class Component<T extends DefaultProps> {
 	}
 
 	private _componentDidMount() {
-		this.componentDidMount && this.componentDidMount();
+		this.componentDidMount?.();
 	}
 
 	private _componentDidUpdate() {
-		this.componentDidUpdate && this.componentDidUpdate();
+		this.componentDidUpdate?.();
 
-		this.props.children?.forEach((child) => child.componentDidUpdate && child.componentDidUpdate());
+		this.props.children?.forEach((child) => child.componentDidUpdate?.());
 	}
 
 	private _addEventListener() {
