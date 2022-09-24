@@ -1,5 +1,6 @@
-import IconButton from '../icon-button';
 import Component, { DefaultProps } from '../../core/component';
+
+import IconButton from '../icon-button';
 
 import template from './back.tmpl';
 
@@ -7,12 +8,6 @@ type Props = DefaultProps;
 
 export default class Back extends Component<Props> {
 	constructor(props: Props = {}) {
-		if (!props.children) {
-			props.children = [];
-		}
-
-		props.children.push(new IconButton({ icon: 'arrow-left', href: '/' }));
-
-		super(template, props);
+		super(template, Component.setChildrenInProps(props, new IconButton({ icon: 'arrow-left', href: '/' })));
 	}
 }

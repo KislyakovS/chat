@@ -1,10 +1,12 @@
 import Component, { DefaultProps } from '../../core/component';
 
+import type { ButtonType } from '../../types';
+
 import template from './button.tmpl';
 
 type Props = DefaultProps & {
 	href?: string,
-	type?: 'button' | 'submit' | 'reset',
+	type?: ButtonType,
 	isRound?: boolean,
 	text: string,
 }
