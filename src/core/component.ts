@@ -115,6 +115,16 @@ export default abstract class Component<T extends DefaultProps> {
 		Object.assign(this.props, nextProps);
 	}
 
+	static setChildrenInProps(props: DefaultProps, ...children: Component<DefaultProps>[]) {
+		if (!props.children) {
+			props.children = [];
+		}
+
+		props.children.push(...children);
+
+		return props;
+	}
+
 	public get element() {
 		return this._element;
 	}
