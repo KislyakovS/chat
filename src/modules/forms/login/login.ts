@@ -6,12 +6,10 @@ import Field from '../../../components/field';
 
 import template from './login.tmpl';
 
-type Props = DefaultProps & {
-	className?: string
-};
+type Props = DefaultProps;
 
 export default class Login extends Component<Props> {
-	constructor(props: Props = {}) {
+	constructor() {
 		const login = new Field({
 			error: 'Invalid login',
 			placeholder: 'Login',
@@ -29,6 +27,7 @@ export default class Login extends Component<Props> {
 		});
 
 		const form = new Form({
+			className: 'w-100',
 			children: [login, password, button],
 			events: {
 				submit: (e) => {
@@ -41,6 +40,6 @@ export default class Login extends Component<Props> {
 			},
 		});
 
-		super(template, Component.setChildrenInProps(props, form));
+		super(template, Component.setChildrenInProps({}, form));
 	}
 }

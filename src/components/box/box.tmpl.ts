@@ -1,6 +1,7 @@
 export default `
 - const w = width || '400px'
 - const h = height || 'auto'
-div.box(class=className style={ width: width, 'min-height': height })
+- const c = (className || '') + (isCenter ? ' box_center' : '')
+div.box(class=c style={ width: w, 'min-height': h })
 	+block
 `;
