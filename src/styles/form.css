@@ -3,17 +3,17 @@
     flex-direction: column;
     align-items: center;
 
-    &__field:not(:last-of-type) {
-        margin-bottom: 15px;
-    }
+	& label:not(:last-of-type) {
+		margin-bottom: 15px;
+	}
 
-    &__field:last-of-type {
+	& label:last-of-type {
         margin-bottom: 40px;
     }
 
-    &__submit {
-        margin-top: auto;
-    }
+	& button[type='submit'] {
+		margin-top: auto;
+	}
 }
 
 .form_tabel {
