@@ -1,5 +1,6 @@
 import Component, { DefaultProps } from '../../../core/component';
 
+import Form from '../../../components/form';
 import Button from '../../../components/button';
 import Field from '../../../components/field';
 
@@ -27,6 +28,19 @@ export default class Login extends Component<Props> {
 			text: 'Sign in',
 		});
 
-		super(template, Component.setChildrenInProps(props, login, password, button));
+		const form = new Form({
+			children: [login, password, button],
+			events: {
+				submit: (e) => {
+					e.preventDefault();
+					console.log({
+						login: login.value,
+						password: password.value,
+					});
+				},
+			},
+		});
+
+		super(template, Component.setChildrenInProps(props, form));
 	}
 }

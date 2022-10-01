@@ -17,4 +17,10 @@ export default class Field extends Component<Props> {
 	constructor(props: Props) {
 		super(template, props);
 	}
+
+	get value() {
+		const input = this.element.querySelector('input') as HTMLInputElement;
+
+		return input.value;
+	}
 }
