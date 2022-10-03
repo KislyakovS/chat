@@ -1,14 +1,14 @@
-import Component, { DefaultProps } from '../../../core/component';
+import Component, { DefaultProps } from '../../core/component';
 
-import Form from '../../../components/form';
-import Button from '../../../components/button';
-import Field from '../../../components/field';
+import Form from '../../components/form';
+import Button from '../../components/button';
+import Field from '../../components/field';
 
-import template from './sign-up.tmpl';
+import template from './sign-up-form.tmpl';
 
 type Props = DefaultProps;
 
-export default class SignUp extends Component<Props> {
+export default class SignUpForm extends Component<Props> {
 	constructor(props: Props = {}) {
 		const email = new Field({
 			error: 'Invalid mail',

@@ -1,6 +1,8 @@
 import { compile } from 'pug';
 import Component, { DefaultProps } from '../core/component';
 
+const createStub = (id: string) => `<div data-id=${id}></div>`;
+
 export default <T extends Pick<DefaultProps, 'children'>>(template: string, props: T) => {
 	const fragment = document.createElement('template');
 
@@ -16,10 +18,10 @@ export default <T extends Pick<DefaultProps, 'children'>>(template: string, prop
 	});
 
 	childrenInComponent.forEach((child) => {
-		template = template.replace(`+${child.constructor.name}`, `<div data-id="${child.id}"></div>`);
+		template = template.replace(`+${child.constructor.name}`, createStub(child.id));
 	});
 
-	template = template.replace('+block', childrenInBlock.map((child) => `<div data-id="${child.id}"></div>`).join(''));
+	template = template.replace('+block', childrenInBlock.map((child) => createStub(child.id)).join(''));
 
 	fragment.innerHTML = compile(template)(props);
 

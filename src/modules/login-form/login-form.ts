@@ -1,14 +1,14 @@
-import Component, { DefaultProps } from '../../../core/component';
+import Component, { DefaultProps } from '../../core/component';
 
-import Form from '../../../components/form';
-import Button from '../../../components/button';
-import Field from '../../../components/field';
+import Form from '../../components/form';
+import Button from '../../components/button';
+import Field from '../../components/field';
 
-import template from './login.tmpl';
+import template from './login-form.tmpl';
 
 type Props = DefaultProps;
 
-export default class Login extends Component<Props> {
+export default class LoginForm extends Component<Props> {
 	constructor() {
 		const login = new Field({
 			error: 'Invalid login',
@@ -40,6 +40,6 @@ export default class Login extends Component<Props> {
 			},
 		});
 
-		super(template, Component.setChildrenInProps({}, form));
+		super(template, { children: [form] });
 	}
 }

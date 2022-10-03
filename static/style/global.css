@@ -55,3 +55,46 @@ body {
 
 	border-bottom: 1px solid var(--divider-color);
 }
+
+/* Global */
+
+.box {
+	width: 400px;
+	min-height: auto;
+    padding: 30px;
+
+    background-color: var(--second-color);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+
+	&_center {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		transform: translate(-50%, -50%);
+	}
+}
+
+.title {
+    margin: 0px;
+
+    font-size: var(--large-font-size);
+    color: var(--primary-color);
+}
+
+
+.link {
+    font-size: var(--small-font-size);
+    color: var(--accent-color);
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+        text-decoration: underline;
+    }
+
+    &_accent {
+        color: var(--second-accent-color);
+    }
+}

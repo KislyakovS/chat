@@ -67,6 +67,10 @@ button.reset {
 
 /* others */
 
+.d-block {
+	display: block;
+}
+
 .block-center {
     position: absolute;
     top: 50%;
