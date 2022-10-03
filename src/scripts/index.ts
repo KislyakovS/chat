@@ -3,7 +3,8 @@
 // import H1 from '../components/h1';
 // import Link from '../components/link';
 
-import Login from '../pages/login/login';
+import Login from '../pages/login';
+import SignUp from '../pages/sign-up';
 
 const main = document.querySelector('main') as HTMLElement;
 main.classList.remove('h-100', 'd-flex');
@@ -17,8 +18,9 @@ main.innerHTML = '';
 // });
 
 const login = new Login();
+const signUp = new SignUp();
 
-main.append(login.element);
+main.append(signUp.element);
 
 // eslint-disable-next-line max-len
 // main.append(blog.element, avatar.element, back.element, h1.element, changeAvatar.element, field.element, login.element);
