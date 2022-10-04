@@ -98,3 +98,19 @@ body {
         color: var(--second-accent-color);
     }
 }
+
+
+.error-page-message {
+    text-align: center;
+
+    &__status {
+        display: block;
+        margin-bottom: 20px;
+
+        font-size: 40px;
+    }
+
+    &__text {
+        margin-bottom: 70px;
+    }
+}
