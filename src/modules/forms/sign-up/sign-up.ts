@@ -1,10 +1,10 @@
-import Component, { DefaultProps } from '../../core/component';
+import Component, { DefaultProps } from '../../../core/component';
 
-import Form from '../../components/form';
-import Button from '../../components/button';
-import Field from '../../components/field';
+import Form from '../../../components/form';
+import Button from '../../../components/button';
+import Field from '../../../components/field';
 
-import template from './sign-up-form.tmpl';
+import template from './sign-up.tmpl';
 
 type Props = DefaultProps;
 

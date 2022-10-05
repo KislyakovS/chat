@@ -1,6 +1,6 @@
 import Component, { DefaultProps } from '../../core/component';
 
-import SignUpForm from '../../modules/sign-up-form';
+import SignUpForm from '../../modules/forms/sign-up';
 
 import template from './sign-up.tmpl';
 

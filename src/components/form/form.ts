@@ -4,6 +4,7 @@ import template from './form.tmpl';
 
 type Props = DefaultProps & {
 	className?: string,
+	isTable?: boolean
 };
 
 export default class Form extends Component<Props> {

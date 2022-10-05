@@ -1,10 +1,10 @@
-import Component, { DefaultProps } from '../../core/component';
+import Component, { DefaultProps } from '../../../core/component';
 
-import Form from '../../components/form';
-import Button from '../../components/button';
-import Field from '../../components/field';
+import Form from '../../../components/form';
+import Button from '../../../components/button';
+import Field from '../../../components/field';
 
-import template from './login-form.tmpl';
+import template from './login.tmpl';
 
 type Props = DefaultProps;
 
@@ -28,7 +28,6 @@ export default class LoginForm extends Component<Props> {
 		});
 
 		const form = new Form({
-			className: 'w-100',
 			children: [login, password, button],
 			events: {
 				submit: (e) => {

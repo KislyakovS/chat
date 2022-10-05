@@ -1,4 +1,6 @@
 export default `
-form.form(class=className)
+- const clsTable = isTable ? 'form_tabel' : ''
+- const cls = className || ''
+form.form(class=cls + clsTable)
 	+block
 `;

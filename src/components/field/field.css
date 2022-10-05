@@ -9,7 +9,7 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-between;
-		padding: var(--inset) 0px;
+		padding: 10px 0px;
 
 		&:not(:last-of-type) {
 			border-bottom: 1px solid var(--divider-color);
@@ -46,6 +46,7 @@
     }
 
 	&_row &__input {
+		width: auto;
 		padding: 0px;
 		flex-grow: 1;
 

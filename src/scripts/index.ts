@@ -5,6 +5,11 @@
 
 import Login from '../pages/login';
 import SignUp from '../pages/sign-up';
+import NotFound from '../pages/not-found';
+import InternalError from '../pages/internal-error';
+
+import Field from '../components/field';
+import PasswordChangeForm from '../modules/forms/password-change';
 
 const main = document.querySelector('main') as HTMLElement;
 main.classList.remove('h-100', 'd-flex');
@@ -19,8 +24,36 @@ main.innerHTML = '';
 
 const login = new Login();
 const signUp = new SignUp();
+const notFound = new NotFound();
+const internalError = new InternalError();
 
-main.append(signUp.element);
+const passwordChangeForm = new PasswordChangeForm();
+
+const field = new Field({
+	label: 'Old password',
+	type: 'password',
+	error: 'No passwor',
+	placeholder: 'passwor',
+	name: 'qewqeqweq',
+	isRow: true,
+ });
+
+ const field2 = new Field({
+	label: 'New password',
+	error: 'No passwor',
+	type: 'password',
+	placeholder: 'qweqw',
+	name: 'wqeqwe',
+	isRow: true,
+ });
+
+// main.append(field.element, field2.element);
+main.append(passwordChangeForm.element);
+
+
+
+// main.append(internalError.element);
+// main.append(signUp.element);
 
 // eslint-disable-next-line max-len
 // main.append(blog.element, avatar.element, back.element, h1.element, changeAvatar.element, field.element, login.element);
