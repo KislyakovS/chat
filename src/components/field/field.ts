@@ -11,6 +11,7 @@ type Props = DefaultProps & {
 	type?: InputType,
 	placeholder: string,
 	name: string,
+	isRow?: boolean,
 };
 
 export default class Field extends Component<Props> {

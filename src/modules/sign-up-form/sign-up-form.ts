@@ -44,6 +44,7 @@ export default class SignUpForm extends Component<Props> {
 			name: 'password',
 		});
 		const button = new Button({
+			className: 'w-100',
 			type: 'submit',
 			text: 'Sign up',
 		});

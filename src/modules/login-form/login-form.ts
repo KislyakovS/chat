@@ -22,6 +22,7 @@ export default class LoginForm extends Component<Props> {
 			name: 'password',
 		});
 		const button = new Button({
+			className: 'w-100',
 			type: 'submit',
 			text: 'Sign in',
 		});
