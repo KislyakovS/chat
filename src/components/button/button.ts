@@ -5,6 +5,7 @@ import type { ButtonType } from '../../types';
 import template from './button.tmpl';
 
 type Props = DefaultProps & {
+	className?: string,
 	href?: string,
 	type?: ButtonType,
 	isRound?: boolean,
