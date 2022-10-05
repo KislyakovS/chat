@@ -12,7 +12,7 @@ export default class PasswordChangeForm extends Component<DefaultProps> {
 			label: 'Old password',
 			type: 'password',
 			error: 'Invalid password',
-			placeholder: 'old password',
+			placeholder: 'Old password',
 			name: 'old_password',
 			isRow: true,
 		});
