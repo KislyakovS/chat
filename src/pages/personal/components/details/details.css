@@ -1,0 +1,13 @@
+.details {
+	margin-bottom: 40px;
+
+	& .avatar {
+		display: block;
+		margin: 0px auto;
+		margin-bottom: 40px;
+	}
+
+	&__value {
+		color: var(--dark-gray-color);
+	}
+}

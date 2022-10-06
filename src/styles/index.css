@@ -23,6 +23,7 @@
 @import '../components/chat-list/chat-list.css';
 @import '../components/user/user.css';
 @import '../components/form/form.css';
+@import '../pages/personal/components/details/details.css';
 
 /* Layout */
 @import '../layout/profile/profile.css';
