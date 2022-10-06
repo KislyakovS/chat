@@ -24,12 +24,20 @@
 @import '../components/user/user.css';
 @import '../components/form/form.css';
 @import '../pages/personal/components/details/details.css';
+@import '../pages/messager/components/user/user.css';
+@import '../pages/messager/components/search/search.css';
+@import '../pages/messager/components/dialogs/dialogs.css';
+@import '../pages/messager/components/messages/messages.css';
 
 /* Layout */
 @import '../layout/profile/profile.css';
 
 /* Modules */
 @import '../modules/send-message-form/send-message-form.css';
+@import '../modules/forms/send-message/send-message.css';
+
+/* Pages */
+@import '../pages/messager/messager.css';
 
 /* Atomic */
 @import '../../static/style/atomic.css';

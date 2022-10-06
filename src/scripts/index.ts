@@ -7,13 +7,17 @@ import Login from '../pages/login';
 import SignUp from '../pages/sign-up';
 import NotFound from '../pages/not-found';
 import InternalError from '../pages/internal-error';
+import PasswordChange from '../pages/password-change';
+import PersonalChange from '../pages/personal-change';
+import Personal from '../pages/personal';
+import Messager from '../pages/messager';
 
 import Field from '../components/field';
 import PasswordChangeForm from '../modules/forms/password-change';
 
 const main = document.querySelector('main') as HTMLElement;
-main.classList.remove('h-100', 'd-flex');
-main.innerHTML = '';
+// main.classList.remove('h-100', 'd-flex');
+// main.innerHTML = '';
 
 // const link = new Link({
 // 	href: '/',
@@ -47,8 +51,24 @@ const field = new Field({
 	isRow: true,
  });
 
+ const passwordChange = new PasswordChange();
+
+ const personal = new Personal();
+
+ const messager = new Messager();
+
+main.classList.remove('h-100', 'd-flex');
+main.innerHTML = '';
+main.append(messager.element);
+
+//  main.append(personal.element);
+
+//  main.append(passwordChange.element);
+
+// main.append(new PersonalChange().element);
+
 // main.append(field.element, field2.element);
-main.append(passwordChangeForm.element);
+// main.append(passwordChangeForm.element);
 
 
 
