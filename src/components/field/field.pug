@@ -1,8 +1,0 @@
-mixin field(error, className)
-    label.field(class=className)
-        unless !block
-            span.field__label
-                block
-        input.field__input(type='text' placeholder='login')&attributes(attributes)
-        unless !error
-            sapn.field__error=error
