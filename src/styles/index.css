@@ -1,27 +1,16 @@
 /* Core */
 @import '../../static/style/normalize.css';
-@import '../../static/style/fonts.css';
-@import '../../static/style/variables.css';
-@import '../../static/style/global.css';
+@import './fonts.css';
+@import './variables.css';
+@import './global.css';
 
 /* Components */
 @import '../components/button/button.css';
 @import '../components/link/link.css';
 @import '../components/field/field.css';
-@import '../components/box/box.css';
-@import '../components/h1/h1.css';
-@import '../components/error-page-message/error-page-message.css';
 @import '../components/back/back.css';
-@import '../components/profile-info/profile-info.css';
 @import '../components/avatar/avatar.css';
 @import '../components/change-avatar/change-avatar.css';
-@import '../components/dialog/dialog.css';
-@import '../components/dialogs/dialogs.css';
-@import '../components/modal/modal.css';
-@import '../components/search-field/search-field.css';
-@import '../components/message/message.css';
-@import '../components/chat-list/chat-list.css';
-@import '../components/user/user.css';
 @import '../components/form/form.css';
 @import '../pages/personal/components/details/details.css';
 @import '../pages/messager/components/user/user.css';
@@ -29,15 +18,11 @@
 @import '../pages/messager/components/dialogs/dialogs.css';
 @import '../pages/messager/components/messages/messages.css';
 
-/* Layout */
-@import '../layout/profile/profile.css';
-
 /* Modules */
-@import '../modules/send-message-form/send-message-form.css';
 @import '../modules/forms/send-message/send-message.css';
 
 /* Pages */
 @import '../pages/messager/messager.css';
 
 /* Atomic */
-@import '../../static/style/atomic.css';
+@import './atomic.css';

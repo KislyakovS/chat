@@ -1,8 +1,0 @@
-.user {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-
-	color: var(--primary-color);
-	text-decoration: none;
-}

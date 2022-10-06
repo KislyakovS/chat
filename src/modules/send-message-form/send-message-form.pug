@@ -1,7 +1,0 @@
-include ../../components/button/button.pug
-
-mixin sendMessageForm()
-    form.send-message-form.d-flex.f-ai-c&attributes(attributes)
-        input(type='text' name='message' placeholder='Message').reset.send-message-form__field
-        +button(true)(type='submit' aria-label='send a message')
-            include ../../../static/icons/arrow-right.svg
