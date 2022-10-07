@@ -85,3 +85,16 @@ body {
         margin-bottom: 70px;
     }
 }
+
+
+
+.page-personal {
+    display: flex;
+    min-height: 100vh;
+
+    &__content {
+        width: 550px;
+        padding: 60px 20px;
+        margin: 0px auto;
+    }
+}

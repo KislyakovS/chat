@@ -1,7 +1,7 @@
 export default `
-div.page-profile
+div.page-personal
 	+Back
-	section.page-profile__content
+	section.page-personal__content
 		+Details
 		+Navigation
 `;

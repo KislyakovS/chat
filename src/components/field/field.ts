@@ -7,6 +7,7 @@ import template from './field.tmpl';
 type Props = DefaultProps & {
 	className?: string,
 	label?: string,
+	hasError?: boolean,
 	error: string,
 	type?: InputType,
 	placeholder: string,
