@@ -6,8 +6,8 @@ const createStub = (id: string) => `<div data-id=${id}></div>`;
 export default <T extends Pick<DefaultProps, 'children'>>(template: string, props: T) => {
 	const fragment = document.createElement('template');
 
-	const childrenInComponent: Component<DefaultProps>[] = [];
-	const childrenInBlock: Component<DefaultProps>[] = [];
+	const childrenInComponent: Component[] = [];
+	const childrenInBlock: Component[] = [];
 
 	props.children?.forEach((child) => {
 		if (template.includes(`+${child.constructor.name}`)) {

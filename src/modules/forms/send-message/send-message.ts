@@ -1,4 +1,4 @@
-import Component, { DefaultProps } from '../../../core/component';
+import Component from '../../../core/component';
 
 import Form from '../../../components/form';
 import Field from '../../../components/field';
@@ -6,7 +6,7 @@ import IconButton from '../../../components/icon-button';
 
 import template from './send-message.tmpl';
 
-export default class SendMessageForm extends Component<DefaultProps> {
+export default class SendMessageForm extends Component {
 	constructor() {
 		const field = new Field({
 			className: 'send-message-form__field',

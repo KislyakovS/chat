@@ -1,4 +1,4 @@
-import Component, { DefaultProps } from '../../core/component';
+import Component from '../../core/component';
 
 import User from './components/user';
 import Search from './components/search';
@@ -8,15 +8,17 @@ import SendMessageForm from '../../modules/forms/send-message';
 
 import template from './messager.tmpl';
 
-export default class Messager extends Component<DefaultProps> {
+export default class Messager extends Component {
 	constructor() {
-		super(template, { children: [
+		super(template, {
+ children: [
 			new User({ name: 'Alexandr' }),
 			new Search(),
 			new User({ name: 'Ivan' }),
 			new Dialogs(),
 			new Messages(),
 			new SendMessageForm(),
-		]});
+		],
+});
 	}
 }

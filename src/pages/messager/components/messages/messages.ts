@@ -1,9 +1,9 @@
-import Component, { DefaultProps } from '../../../../core/component';
+import Component from '../../../../core/component';
 
 import template from './messages.templ';
 
-export default class Messages extends Component<DefaultProps> {
+export default class Messages extends Component {
 	constructor() {
-		super(template, {});
+		super(template);
 	}
 }

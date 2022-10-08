@@ -8,10 +8,10 @@ import type { ElementEventName } from '../types';
 type EventName = keyof typeof Component.eventName;
 export type DefaultProps = {
 	events?: Partial<Record<ElementEventName, EventListenerOrEventListenerObject>>
-	children?: Component<DefaultProps>[]
+	children?: Component[]
 }
 
-export default abstract class Component<T extends DefaultProps> {
+export default abstract class Component<T extends DefaultProps = Record<string, unknown>> {
 	static eventName = {
 		render: 'render',
 		rerender: 'rerender',
@@ -25,7 +25,7 @@ export default abstract class Component<T extends DefaultProps> {
 	private readonly _template: string;
 	private _element: HTMLElement;
 
-	constructor(template: string, props: T) {
+	constructor(template: string, props: T = {} as T) {
 		this.eventBus = new EventBus();
 		this.props = this._makePropsProxy(props);
 		this._template = template;
@@ -113,16 +113,6 @@ export default abstract class Component<T extends DefaultProps> {
 		}
 
 		Object.assign(this.props, nextProps);
-	}
-
-	static setChildrenInProps(props: DefaultProps, ...children: Component<DefaultProps>[]) {
-		if (!props.children) {
-			props.children = [];
-		}
-
-		props.children.push(...children);
-
-		return props;
 	}
 
 	public get element() {

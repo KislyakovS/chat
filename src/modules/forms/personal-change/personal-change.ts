@@ -1,4 +1,4 @@
-import Component, { DefaultProps } from '../../../core/component';
+import Component from '../../../core/component';
 
 import Form from '../../../components/form';
 import Button from '../../../components/button';
@@ -7,7 +7,7 @@ import ChangeAvatar from '../../../components/change-avatar';
 
 import template from './personal-change.tmpl';
 
-export default class PersonalChangeForm extends Component<DefaultProps> {
+export default class PersonalChangeForm extends Component {
 	constructor() {
 		const avatar = new ChangeAvatar({ className: 'mb-40' });
 

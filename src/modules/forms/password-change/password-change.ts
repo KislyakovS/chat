@@ -1,4 +1,4 @@
-import Component, { DefaultProps } from '../../../core/component';
+import Component from '../../../core/component';
 
 import Form from '../../../components/form';
 import Button from '../../../components/button';
@@ -6,7 +6,7 @@ import Field from '../../../components/field';
 
 import template from './password-change.tmpl';
 
-export default class PasswordChangeForm extends Component<DefaultProps> {
+export default class PasswordChangeForm extends Component {
 	constructor() {
 		const oldPassword = new Field({
 			label: 'Old password',

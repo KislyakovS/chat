@@ -1,9 +1,9 @@
-import Component, { DefaultProps } from '../../core/component';
+import Component from '../../core/component';
 
 import template from './internal-error.tmpl';
 
-export default class InternalError extends Component<DefaultProps> {
+export default class InternalError extends Component {
 	constructor() {
-		super(template, {});
+		super(template);
 	}
 }

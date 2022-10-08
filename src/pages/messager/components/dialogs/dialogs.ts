@@ -1,9 +1,9 @@
-import Component, { DefaultProps } from '../../../../core/component';
+import Component from '../../../../core/component';
 
 import template from './dialogs.tmpl';
 
-export default class Dialogs extends Component<DefaultProps> {
+export default class Dialogs extends Component {
 	constructor() {
-		super(template, {});
+		super(template);
 	}
 }

@@ -1,4 +1,4 @@
-import Component, { DefaultProps } from '../../../core/component';
+import Component from '../../../core/component';
 
 import Form from '../../../components/form';
 import Button from '../../../components/button';
@@ -6,10 +6,8 @@ import Field from '../../../components/field';
 
 import template from './sign-up.tmpl';
 
-type Props = DefaultProps;
-
-export default class SignUpForm extends Component<Props> {
-	constructor(props: Props = {}) {
+export default class SignUpForm extends Component {
+	constructor() {
 		const email = new Field({
 			error: 'Invalid mail',
 			type: 'email',
@@ -66,6 +64,6 @@ export default class SignUpForm extends Component<Props> {
 			},
 		});
 
-		super(template, Component.setChildrenInProps(props, form));
+		super(template, { children: [form] });
 	}
 }

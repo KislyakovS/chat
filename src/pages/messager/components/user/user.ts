@@ -9,8 +9,8 @@ type Props = DefaultProps & {
 	name: string
 }
 
-export default class User extends Component<DefaultProps> {
+export default class User extends Component<Props> {
 	constructor(props: Props) {
-		super(template, Component.setChildrenInProps(props, new Avatar({ size: '35px' })));
+		super(template, { ...props, children: [new Avatar({ size: '35px' })] });
 	}
 }

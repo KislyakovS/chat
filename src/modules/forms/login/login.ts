@@ -1,4 +1,4 @@
-import Component, { DefaultProps } from '../../../core/component';
+import Component from '../../../core/component';
 
 import Form from '../../../components/form';
 import Button from '../../../components/button';
@@ -6,9 +6,7 @@ import Field from '../../../components/field';
 
 import template from './login.tmpl';
 
-type Props = DefaultProps;
-
-export default class LoginForm extends Component<Props> {
+export default class LoginForm extends Component {
 	constructor() {
 		const login = new Field({
 			error: 'Invalid login',

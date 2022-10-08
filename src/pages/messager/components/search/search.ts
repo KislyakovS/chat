@@ -1,9 +1,9 @@
-import Component, { DefaultProps } from '../../../../core/component';
+import Component from '../../../../core/component';
 
 import template from './search.tmpl';
 
-export default class Search extends Component<DefaultProps> {
+export default class Search extends Component {
 	constructor() {
-		super(template, {});
+		super(template);
 	}
 }
