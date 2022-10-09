@@ -139,15 +139,19 @@ export default abstract class Component {
 
 	protected props: Record<string, unknown>;
 	protected state: Record<string, unknown>;
-	private _children: Record<string, Component>;
+	private _children: Record<string, unknown>;
+	private _events: Record<string, EventListenerOrEventListenerObject>;
 
 	private _element: HTMLElement;
 	private _template: Element;
 
-	constructor({ props = {}, state = {}, children = {} } = {}) {
+	constructor({
+		props = {}, state = {}, children = {}, events = {},
+	} = {}) {
 		this.props = props;
 		this.state = this._makeStateProxy(state);
 		this._children = children;
+		this._events = events;
 
 		this._registerEvents();
 
@@ -204,7 +208,9 @@ export default abstract class Component {
 	}
 
 	public getEvents() {
-		return this.events?.() || {};
+		const events = this.events?.() || {};
+
+		return { ...events, ...this._events };
 	}
 
 	public get element() {

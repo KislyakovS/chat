@@ -19,6 +19,6 @@ import Component from '../../core/component';
 
 export default class Link extends Component {
 	render(): string {
-		return `<a class="link ${this.props.class}" href="${this.props.href}">${this.props.children}</a>`;
+		return `<a class="link ${this.props.isAccent ? 'link_accent' : ''} ${this.props.class}" href="${this.props.href}">${this.props.children}</a>`;
 	}
 }

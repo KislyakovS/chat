@@ -21,7 +21,7 @@ export default class SignUpForm extends Component {
 
 	render() {
 		return `
-			<Form>
+			<Form onSubmit="onSubmit">
 				<Field type="email" name="email" placeholder="Email" />
 				<Field type="text" name="login" placeholder="Login" />
 				<Field type="text" name="first_name" placeholder="Name" />
