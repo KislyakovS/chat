@@ -1,14 +1,11 @@
-import Component, { DefaultProps } from '../../core/component';
+import Component from '../../core/component';
 
-import template from './form.tmpl';
-
-type Props = DefaultProps & {
-	className?: string,
-	isTable?: boolean
-};
-
-export default class Form extends Component<Props> {
-	constructor(props: Props = {}) {
-		super(template, props);
+export default class Form extends Component {
+	render() {
+		return `
+		<form class="form">
+			${this.props.children}
+		</form>
+		`;
 	}
 }

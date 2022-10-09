@@ -7,7 +7,7 @@ export default class LoginForm extends Component {
 	onSubmit(e: Event) {
 		e.preventDefault();
 
-		console.log('Submit');
+		console.log('Submit login form');
 	}
 
 	protected children() {

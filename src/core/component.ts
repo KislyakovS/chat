@@ -123,7 +123,7 @@
 // 	protected componentDidUpdate?(): void;
 // }
 
-import DOM from '../utils/compile';
+import Template from '../utils/compile';
 import EventBus from './event-bus';
 
 type EventName = keyof typeof Component.eventName;
@@ -142,6 +142,7 @@ export default abstract class Component {
 	private _children: Record<string, Component>;
 
 	private _element: HTMLElement;
+	private _template: Element;
 
 	constructor({ props = {}, state = {}, children = {} } = {}) {
 		this.props = props;
@@ -176,13 +177,24 @@ export default abstract class Component {
 	}
 
 	private _render() {
-		this._element = DOM.createElement(this.render(), this.getChildren(), this.events);
+		this._template = this._compile();
+		this._element = Template.toDOM(this._template);
+
+		// this.eventBus.emite(Component.eventName.componentDidMount);
 	}
 
 	private _rerender() {
-		const newElement = DOM.createElement(this.render(), this.getChildren(), this.events);
+		this._template = this._compile();
+
+		const newElement = Template.toDOM(this._template);
 		this._element.replaceWith(newElement);
 		this._element = newElement;
+
+		// this.eventBus.emite(Component.eventName.componentDidUpdate);
+	}
+
+	private _compile() {
+		return Template.compile(this.render(), this.getChildren(), this.getEvents());
 	}
 
 	public getChildren() {
@@ -197,6 +209,10 @@ export default abstract class Component {
 
 	public get element() {
 		return this._element;
+	}
+
+	public get template() {
+		return this._template;
 	}
 
 	protected children?(): Record<string, unknown>;
