@@ -1,62 +1,3 @@
-// import Component from '../../../core/component';
-
-// import Form from '../../../components/form';
-// import Button from '../../../components/button';
-// import Field from '../../../components/field';
-
-// import template from './password-change.tmpl';
-
-// export default class PasswordChangeForm extends Component {
-// 	constructor() {
-// 		const oldPassword = new Field({
-// 			label: 'Old password',
-// 			type: 'password',
-// 			error: 'Invalid password',
-// 			placeholder: 'Old password',
-// 			name: 'old_password',
-// 			isRow: true,
-// 		});
-// 		const newPassword = new Field({
-// 			label: 'New password',
-// 			error: 'Invalid password',
-// 			type: 'password',
-// 			placeholder: 'New password',
-// 			name: 'new_password',
-// 			isRow: true,
-// 		});
-// 		const repeatPassword = new Field({
-// 			label: 'Repeat the new password',
-// 			error: 'Invalid password',
-// 			type: 'password',
-// 			placeholder: 'Repeat password',
-// 			name: 'repeat_password',
-// 			isRow: true,
-// 		});
-// 		const button = new Button({
-// 			className: 'w-100',
-// 			type: 'submit',
-// 			text: 'Save',
-// 		});
-
-// 		const form = new Form({
-// 			children: [oldPassword, newPassword, repeatPassword, button],
-// 			isTable: true,
-// 			events: {
-// 				submit: (e) => {
-// 					e.preventDefault();
-// 					console.log({
-// 						oldPassword: oldPassword.value,
-// 						newPassword: newPassword.value,
-// 						repeatPassword: repeatPassword.value,
-// 					});
-// 				},
-// 			},
-// 		});
-
-// 		super(template, { children: [form] });
-// 	}
-// }
-
 import Component from '../../../core/component';
 
 import Form from '../../../components/form';
@@ -64,7 +5,7 @@ import Field from '../../../components/field';
 import Button from '../../../components/button';
 
 export default class PasswordChangeForm extends Component {
-	protected children(): Record<string, unknown> {
+	protected children() {
 		return { Form, Field, Button };
 	}
 
@@ -74,7 +15,7 @@ export default class PasswordChangeForm extends Component {
 			<Field label="Old password" isRow="true" type="password" name="old_password" placeholder="Old password" />
 			<Field label="New password" isRow="true" type="password" name="new_password" placeholder="New password" />
 			<Field label="Repeat the new password" isRow="true" type="password" name="repeat_password" placeholder="Repeat password" />
-			<Button class="w-100">Save</Button>
+			<Button className="w-100">Save</Button>
 		</Form>
 		`;
 	}

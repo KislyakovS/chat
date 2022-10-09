@@ -13,7 +13,7 @@ export default class SignUp extends Component {
 		<div class="box box_center">
 			<h1 class="title text-center mb-40">Sign up</h1>
 			<SignUpForm />
-			<Link class="mt-15 d-block text-center" href="/">Sign in</Link>
+			<Link className="mt-15 d-block text-center" href="/">Sign in</Link>
 		</div>
 		`;
 	}

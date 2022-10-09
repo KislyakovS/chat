@@ -15,7 +15,7 @@ export default class SignUpForm extends Component {
 		return { Form, Field, Button };
 	}
 
-	protected events() {
+	protected listeners() {
 		return { onSubmit: this.onSubmit };
 	}
 
@@ -28,7 +28,7 @@ export default class SignUpForm extends Component {
 				<Field type="text" name="second_name" placeholder="Second name" />
 				<Field type="tel" name="phone" placeholder="Phone" />
 				<Field type="password" name="password" placeholder="Password" />
-				<Button class="w-100">Sign up</Button>
+				<Button className="w-100">Sign up</Button>
 			</Form>
 		`;
 	}

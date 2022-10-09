@@ -123,10 +123,13 @@
 // 	protected componentDidUpdate?(): void;
 // }
 
-import Template from '../utils/compile';
+import Template from '../utils/template';
 import EventBus from './event-bus';
 
+import type { Listeners, Type } from '../types';
+
 type EventName = keyof typeof Component.eventName;
+export type Children = Record<string, Type<Component>>;
 
 export default abstract class Component {
 	static eventName = {
@@ -139,19 +142,18 @@ export default abstract class Component {
 
 	protected props: Record<string, unknown>;
 	protected state: Record<string, unknown>;
-	private _children: Record<string, unknown>;
-	private _events: Record<string, EventListenerOrEventListenerObject>;
+	private _children: Children;
+	private _listeners: Listeners;
 
 	private _element: HTMLElement;
 	private _template: Element;
 
-	constructor({
-		props = {}, state = {}, children = {}, events = {},
-	} = {}) {
+	constructor(props = {}, { state = {}, children = {}, listeners = {} } = {}) {
 		this.props = props;
 		this.state = this._makeStateProxy(state);
+
 		this._children = children;
-		this._events = events;
+		this._listeners = listeners;
 
 		this._registerEvents();
 
@@ -161,8 +163,8 @@ export default abstract class Component {
 	private _registerEvents() {
 		this.eventBus.on(Component.eventName.render, this._render.bind(this));
 		this.eventBus.on(Component.eventName.rerender, this._rerender.bind(this));
-		// this.eventBus.on(Component.eventName.componentDidMount, this._componentDidMount.bind(this));
-		// this.eventBus.on(Component.eventName.componentDidUpdate, this._componentDidUpdate.bind(this));
+		this.eventBus.on(Component.eventName.componentDidMount, this._componentDidMount.bind(this));
+		this.eventBus.on(Component.eventName.componentDidUpdate, this._componentDidUpdate.bind(this));
 	}
 
 	private _makeStateProxy(state: Record<string, unknown>) {
@@ -184,7 +186,7 @@ export default abstract class Component {
 		this._template = this._compile();
 		this._element = Template.toDOM(this._template);
 
-		// this.eventBus.emite(Component.eventName.componentDidMount);
+		this.eventBus.emite(Component.eventName.componentDidMount);
 	}
 
 	private _rerender() {
@@ -194,11 +196,19 @@ export default abstract class Component {
 		this._element.replaceWith(newElement);
 		this._element = newElement;
 
-		// this.eventBus.emite(Component.eventName.componentDidUpdate);
+		this.eventBus.emite(Component.eventName.componentDidUpdate);
+	}
+
+	private _componentDidMount() {
+		this.componentDidMount?.();
+	}
+
+	private _componentDidUpdate() {
+		this._componentDidUpdate?.();
 	}
 
 	private _compile() {
-		return Template.compile(this.render(), this.getChildren(), this.getEvents());
+		return Template.compile(this.render(), this.getChildren(), this.getListeners());
 	}
 
 	public getChildren() {
@@ -207,10 +217,10 @@ export default abstract class Component {
 		return { ...children, ...this._children };
 	}
 
-	public getEvents() {
-		const events = this.events?.() || {};
+	public getListeners() {
+		const events = this.listeners?.() || {};
 
-		return { ...events, ...this._events };
+		return { ...events, ...this._listeners };
 	}
 
 	public get element() {
@@ -221,8 +231,10 @@ export default abstract class Component {
 		return this._template;
 	}
 
-	protected children?(): Record<string, unknown>;
-	protected events?(): Record<string, EventListenerOrEventListenerObject>;
+	protected children?(): Children;
+	protected listeners?(): Listeners;
+	protected componentDidMount?(): void;
+	protected componentDidUpdate?(): void;
 
 	abstract render(): string;
 }

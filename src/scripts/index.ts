@@ -8,4 +8,4 @@ import Personal from '../pages/personal';
 
 const app = document.querySelector('#app') as HTMLElement;
 
-app.append(new SignUp().element);
+app.append(new Personal().element);

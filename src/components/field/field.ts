@@ -1,10 +1,19 @@
 import Component from '../../core/component';
 
+import clsx from '../../utils/clsx';
+
 export default class Field extends Component {
 	render() {
-		return `<label class="field ${this.props.isRow ? 'field_row' : ''}">
-			${this.props.label ? `<span class="field__label">${this.props.label}</span>` : ''}
-			<input class="field__input" type="${this.props.type}" name="${this.props.name}" placeholder="${this.props.placeholder}" />
+		const {
+			isRow, label, type, name, placeholder,
+		} = this.props;
+
+		const cls = clsx('field', { field_row: isRow });
+
+		return `
+		<label class="${cls}">
+			${label ? `<span class="field__label">${label}</span>` : ''}
+			<input class="field__input" type="${type}" name="${name}" placeholder="${placeholder}" />
 		</label>`;
 	}
 }

@@ -1,24 +1,15 @@
-// import Component, { DefaultProps } from '../../core/component';
-
-// import template from './link.tmpl';
-
-// type Props = DefaultProps & {
-// 	className?: string,
-// 	isAccent?: boolean,
-// 	text: string,
-// 	href: string,
-// };
-
-// export default class Link extends Component<Props> {
-// 	constructor(props: Props) {
-// 		super(template, props);
-// 	}
-// }
-
 import Component from '../../core/component';
 
+import clsx from '../../utils/clsx';
+
 export default class Link extends Component {
-	render(): string {
-		return `<a class="link ${this.props.isAccent ? 'link_accent' : ''} ${this.props.class}" href="${this.props.href}">${this.props.children}</a>`;
+	render() {
+		const {
+			isAccent, className, href, children,
+		} = this.props;
+
+		const cls = clsx('link', { link_accent: isAccent }, className);
+
+		return `<a class="${cls}" href="${href}">${children}</a>`;
 	}
 }

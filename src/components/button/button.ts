@@ -1,30 +1,16 @@
-// import Component, { DefaultProps } from '../../core/component';
-
-// import type { ButtonType } from '../../types';
-
-// import template from './button.tmpl';
-
-// type Props = DefaultProps & {
-// 	className?: string,
-// 	href?: string,
-// 	type?: ButtonType,
-// 	isRound?: boolean,
-// 	text: string,
-// }
-
-// export default class Button extends Component<Props> {
-// 	constructor(props: Props) {
-// 		super(template, props);
-// 	}
-// }
-
 import Component from '../../core/component';
+
+import clsx from '../../utils/clsx';
 
 export default class Button extends Component {
 	render() {
+		const { className, children } = this.props;
+
+		const cls = clsx('button', className);
+
 		return `
-		<button class="button ${this.props.class}">
-			${this.props.children}
+		<button class="${cls}">
+			${children}
 		</button>
 		`;
 	}
