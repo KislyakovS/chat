@@ -1,43 +1,30 @@
 import Component from '../../../core/component';
 
-import Form from '../../../components/form';
-import Button from '../../../components/button';
 import Field from '../../../components/field';
-
-import template from './login.tmpl';
+import Button from '../../../components/button';
 
 export default class LoginForm extends Component {
-	constructor() {
-		const login = new Field({
-			error: 'Invalid login',
-			placeholder: 'Login',
-			name: 'login',
-		});
-		const password = new Field({
-			error: 'Invalid password',
-			type: 'password',
-			placeholder: 'Password',
-			name: 'password',
-		});
-		const button = new Button({
-			className: 'w-100',
-			type: 'submit',
-			text: 'Sign in',
-		});
+	onSubmit(e: Event) {
+		e.preventDefault();
 
-		const form = new Form({
-			children: [login, password, button],
-			events: {
-				submit: (e) => {
-					e.preventDefault();
-					console.log({
-						login: login.value,
-						password: password.value,
-					});
-				},
-			},
-		});
+		console.log('Submit');
+	}
 
-		super(template, { children: [form] });
+	protected children() {
+		return { Field, Button };
+	}
+
+	protected events() {
+		return { onSubmit: this.onSubmit };
+	}
+
+	render() {
+		return `
+		<form class="form" onSubmit="onSubmit">
+			<Field type="text" name="login" placeholder="Login" />
+			<Field type="password" name="password" placeholder="Password" />
+			<Button class="w-100">Sign in</Button>
+		</form>
+		`;
 	}
 }
