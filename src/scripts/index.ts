@@ -1,7 +1,5 @@
-import {
-	Login, SignUp, NotFound, InternalError, PasswordChange, Personal, PersonalChange, Messager,
- } from '../pages';
+import { SignUp } from '../pages';
 
 const app = document.querySelector('#app') as HTMLElement;
 
-app.append(new PersonalChange().element);
+app.append(new SignUp().element);

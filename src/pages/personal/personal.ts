@@ -1,13 +1,20 @@
 import Component from '../../core/component';
 
-import Back from '../../components/back';
-import Details from './components/details';
-import Navigation from './components/navigation';
+import { Profile as Layout } from '../../layouts';
 
-import template from './personal.tmpl';
+import { Details, Navigation } from './components';
 
 export default class Personal extends Component {
-	constructor() {
-		super(template, { children: [new Back(), new Details(), new Navigation()] });
+	protected children() {
+		return { Layout, Details, Navigation };
+	}
+
+	render(): string {
+		return `
+		<Layout>
+			<Details className="mb-40" />
+			<Navigation />
+		</Layout>
+		`;
 	}
 }

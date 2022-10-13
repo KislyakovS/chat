@@ -1,12 +1,19 @@
 import Component from '../../core/component';
 
-import Back from '../../components/back';
-import PersonalChangeForm from '../../modules/forms/personal-change';
+import { Profile as Layout } from '../../layouts';
 
-import template from './personal-change.tmpl';
+import { PersonalChangeForm } from '../../modules/forms';
 
 export default class PersonalChange extends Component {
-	constructor() {
-		super(template, { children: [new Back(), new PersonalChangeForm()] });
+	protected children() {
+		return { Layout, PersonalChangeForm };
+	}
+
+	render() {
+		return `
+		<Layout>
+			<PersonalChangeForm />
+		</Layout>
+		`;
 	}
 }

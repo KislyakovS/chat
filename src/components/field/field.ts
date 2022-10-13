@@ -1,28 +1,19 @@
-import Component, { DefaultProps } from '../../core/component';
+import Component from '../../core/component';
 
-import type { InputType } from '../../types';
+import clsx from '../../utils/clsx';
 
-import template from './field.tmpl';
+export default class Field extends Component {
+	render() {
+		const {
+			isRow, label, type, name, placeholder, className,
+		} = this.props;
 
-type Props = DefaultProps & {
-	className?: string,
-	label?: string,
-	hasError?: boolean,
-	error: string,
-	type?: InputType,
-	placeholder: string,
-	name: string,
-	isRow?: boolean,
-};
+		const cls = clsx('field', className, { field_row: isRow });
 
-export default class Field extends Component<Props> {
-	constructor(props: Props) {
-		super(template, props);
-	}
-
-	get value() {
-		const input = this.element.querySelector('input') as HTMLInputElement;
-
-		return input.value;
+		return `
+		<label class="${cls}">
+			${label ? `<span class="field__label">${label}</span>` : ''}
+			<input class="field__input" type="${type}" name="${name}" placeholder="${placeholder}" />
+		</label>`;
 	}
 }

@@ -1,12 +1,19 @@
 import Component from '../../core/component';
 
-import Back from '../../components/back';
-import PasswordChangeForm from '../../modules/forms/password-change';
+import { Profile as Layout } from '../../layouts';
 
-import template from './password-change.tmpl';
+import { PasswordChangeForm } from '../../modules/forms';
 
 export default class PasswordChange extends Component {
-	constructor() {
-		super(template, { children: [new Back(), new PasswordChangeForm()] });
+	protected children() {
+		return { Layout, PasswordChangeForm };
+	}
+
+	render() {
+		return `
+		<Layout>
+			<PasswordChangeForm />
+		</Layout>
+		`;
 	}
 }

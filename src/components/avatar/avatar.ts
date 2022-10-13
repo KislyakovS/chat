@@ -1,14 +1,13 @@
-import Component, { DefaultProps } from '../../core/component';
+import Component from '../../core/component';
 
-import template from './avatar.tmpl';
+import clsx from '../../utils/clsx';
 
-type Props = DefaultProps & {
-	size?: `${number}px`,
-	src?: string
-}
+export default class Avatar extends Component {
+	render() {
+		const { size, src, className } = this.props;
 
-export default class Avatar extends Component<Props> {
-	constructor(props: Props = {}) {
-		super(template, props);
+		const cls = clsx('avatar', className);
+
+		return `<img class="${cls}" style="width: ${size}; height: ${size}" src="${src}" />`;
 	}
 }

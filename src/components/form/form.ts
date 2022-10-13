@@ -1,14 +1,17 @@
-import Component, { DefaultProps } from '../../core/component';
+import Component from '../../core/component';
 
-import template from './form.tmpl';
+import clsx from '../../utils/clsx';
 
-type Props = DefaultProps & {
-	className?: string,
-	isTable?: boolean
-};
+export default class Form extends Component {
+	render() {
+		const { isTable, onSubmit, children, className } = this.props;
 
-export default class Form extends Component<Props> {
-	constructor(props: Props = {}) {
-		super(template, props);
+		const cls = clsx('form', className, { form_table: isTable });
+
+		return `
+		<form class="${cls}" onSubmit="${onSubmit}">
+			${children}
+		</form>
+		`;
 	}
 }
