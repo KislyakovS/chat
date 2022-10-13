@@ -1,7 +1,7 @@
 import Component from '../../core/component';
 
-import LoginForm from '../../modules/forms/login';
-import Link from '../../components/link';
+import { Link } from '../../components';
+import { LoginForm } from '../../modules/forms';
 
 export default class Login extends Component {
 	protected children() {

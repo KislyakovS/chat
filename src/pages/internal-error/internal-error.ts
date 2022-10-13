@@ -1,6 +1,6 @@
 import Component from '../../core/component';
 
-import Link from '../../components/link';
+import { Link } from '../../components';
 
 export default class InternalError extends Component {
 	protected children() {

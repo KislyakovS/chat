@@ -1,23 +1,20 @@
 import Component from '../../core/component';
 
-import Back from '../../components/back';
-import Details from './components/details';
-import Navigation from './components/navigation';
+import { Profile as Layout } from '../../layouts';
+
+import { Details, Navigation } from './components';
 
 export default class Personal extends Component {
 	protected children() {
-		return { Back, Details, Navigation };
+		return { Layout, Details, Navigation };
 	}
 
-	render() {
+	render(): string {
 		return `
-		<div class="page-personal">
-			<Back />
-			<section class="page-personal__content">
-				<Details className="mb-40" />
-				<Navigation />
-			</section>
-		</div>
+		<Layout>
+			<Details className="mb-40" />
+			<Navigation />
+		</Layout>
 		`;
 	}
 }

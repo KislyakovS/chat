@@ -1,7 +1,7 @@
 import Component from '../../core/component';
 
-import SignUpForm from '../../modules/forms/sign-up';
-import Link from '../../components/link';
+import { Link } from '../../components';
+import { SignUpForm } from '../../modules/forms';
 
 export default class SignUp extends Component {
 	protected children() {

@@ -1,9 +1,6 @@
 import Component from '../../../core/component';
 
-import Form from '../../../components/form';
-import ChangeAvatar from '../../../components/change-avatar';
-import Field from '../../../components/field';
-import Button from '../../../components/button';
+import { Form, ChangeAvatar, Field, Button } from '../../../components';
 
 export default class PersonalChangeForm extends Component {
 	protected children() {

@@ -1,6 +1,6 @@
 import Component from '../../../../core/component';
 
-import Avatar from '../../../../components/avatar';
+import { Avatar } from '../../../../components';
 
 import clsx from '../../../../utils/clsx';
 

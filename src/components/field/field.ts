@@ -5,10 +5,10 @@ import clsx from '../../utils/clsx';
 export default class Field extends Component {
 	render() {
 		const {
-			isRow, label, type, name, placeholder,
+			isRow, label, type, name, placeholder, className,
 		} = this.props;
 
-		const cls = clsx('field', { field_row: isRow });
+		const cls = clsx('field', className, { field_row: isRow });
 
 		return `
 		<label class="${cls}">

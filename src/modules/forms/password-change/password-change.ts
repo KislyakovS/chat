@@ -1,8 +1,6 @@
 import Component from '../../../core/component';
 
-import Form from '../../../components/form';
-import Field from '../../../components/field';
-import Button from '../../../components/button';
+import { Form, Field, Button } from '../../../components';
 
 export default class PasswordChangeForm extends Component {
 	protected children() {
