@@ -6,7 +6,7 @@ export default class Message extends Component {
 	render() {
 		const { text, time, isIncoming } = this.props;
 
-		const cls = clsx('message', { 'message_incoming': isIncoming === 'true' })
+		const cls = clsx('message', { message_incoming: isIncoming === 'true' });
 
 		return `
 		<div class="${cls}">

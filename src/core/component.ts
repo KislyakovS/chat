@@ -130,25 +130,29 @@ import type { Listeners, Type } from '../types';
 
 type EventName = keyof typeof Component.eventName;
 export type Children = Record<string, Type<Component>>;
+export type DefaultProps = { children?: string };
+export type DefaultState = Record<string, unknown>;
 
-export default abstract class Component {
-	static eventName = {
+export default abstract class Component<
+	P extends DefaultProps = DefaultProps,
+	S extends DefaultState = DefaultState
+> {
+	static readonly eventName = {
 		render: 'render',
 		rerender: 'rerender',
 		componentDidMount: 'componentDidMount',
 		componentDidUpdate: 'componentDidUpdate',
 	} as const;
+
 	private readonly eventBus = new EventBus<EventName>();
-
-	protected props: Record<string, unknown>;
-	protected state: Record<string, unknown>;
-	private _children: Children;
-	private _listeners: Listeners;
-
+	protected props: P;
+	protected state: S;
+	private readonly _children: Children;
+	private readonly _listeners: Listeners;
 	private _element: HTMLElement;
 	private _template: Element;
 
-	constructor(props = {}, { state = {}, children = {}, listeners = {} } = {}) {
+	constructor(props = {} as P, { state = {} as S, children = {}, listeners = {} } = {}) {
 		this.props = props;
 		this.state = this._makeStateProxy(state);
 
@@ -167,11 +171,11 @@ export default abstract class Component {
 		this.eventBus.on(Component.eventName.componentDidUpdate, this._componentDidUpdate.bind(this));
 	}
 
-	private _makeStateProxy(state: Record<string, unknown>) {
+	private _makeStateProxy(state: S) {
 		return new Proxy(state, {
-			set: (target, key: string, value) => {
-				if (target[key] !== value) {
-					target[key] = value;
+			set: (target, key, value) => {
+				if (target[key as keyof S] !== value) {
+					target[key as keyof S] = value;
 					this.eventBus.emite(Component.eventName.rerender);
 
 					return true;
@@ -204,7 +208,7 @@ export default abstract class Component {
 	}
 
 	private _componentDidUpdate() {
-		this._componentDidUpdate?.();
+		this.componentDidUpdate?.();
 	}
 
 	private _compile() {

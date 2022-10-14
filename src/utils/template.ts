@@ -58,6 +58,7 @@ class Template {
 		return [...attributes].reduce((props, attr) => ({ ...props, [attr.name]: attr.value }), {});
 	}
 
+	// TODO: Change the system of hanging events. [{ listener: this.onSubmit, name: 'click' }]
 	private _setEventHandlers(child: Element, listeners: Listeners) {
 		const eventAttributes = [...child.attributes].filter((it) => /^on/.test(it.name)).map((it) => it.name);
 			eventAttributes.forEach((attr) => {

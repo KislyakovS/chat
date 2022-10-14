@@ -2,7 +2,14 @@ import Component from '../../core/component';
 
 import clsx from '../../utils/clsx';
 
-export default class Link extends Component {
+type Props = {
+	className?: string,
+	href: string,
+	isAccent?: boolean,
+	children: string
+}
+
+export default class Link extends Component<Props> {
 	render() {
 		const {
 			isAccent, className, href, children,

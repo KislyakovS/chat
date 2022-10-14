@@ -1,11 +1,15 @@
 import Component from '../../core/component';
 
-import { User, Search, Dialogs, Messages } from './components';
+import {
+ User, Search, Dialogs, Messages,
+} from './components';
 import { SendMessageForm } from '../../modules/forms';
 
 export default class Messager extends Component {
 	protected children() {
-		return { User, Search, Dialogs, Messages, SendMessageForm };
+		return {
+ User, Search, Dialogs, Messages, SendMessageForm,
+};
 	}
 
 	render() {

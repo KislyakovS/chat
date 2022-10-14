@@ -4,7 +4,7 @@ import { Avatar } from '../../../../components';
 
 export default class Dialog extends Component {
 	protected children() {
-		return { Avatar }
+		return { Avatar };
 	}
 
 	render() {

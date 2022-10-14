@@ -12,7 +12,7 @@ export default class Dialogs extends Component {
 
 		return `
 		<ol class="dialogs reset">
-			${dialogs.map(dialog => `<li><Dialog name="${dialog.name}" message="${dialog.message}" count="${dialog.count}" /></li>`).join('')}
+			${dialogs.map((dialog) => `<li><Dialog name="${dialog.name}" message="${dialog.message}" count="${dialog.count}" /></li>`).join('')}
 		</ol>
 		`;
 	}

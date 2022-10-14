@@ -1,7 +1,7 @@
 type ClassValue = number | string | boolean | ClassArray | ClassObject | null | undefined;
 type ClassArray = Array<ClassValue>
 interface ClassObject {
-  [key: string]: boolean;
+  [key: string]: boolean | undefined | null;
 }
 
 const clsx = (...args: ClassValue[]): string => {
