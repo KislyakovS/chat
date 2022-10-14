@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+	font-family: var(--font-family-body);
+	font-weight: var(--font-weight);
+
+	color: var(--primary-color);
+}
+
+.list {
+	margin: 0px;
+	padding: 0px;
+
+	list-style: none;
+
+	& li {
+		padding: 10px 0px;
+
+		&:not(:last-of-type) {
+			border-bottom: 1px solid var(--divider-color);
+		}
+	}
+}
+
+
+.title {
+    margin: 0px;
+
+    font-size: var(--large-font-size);
+    color: var(--primary-color);
+}

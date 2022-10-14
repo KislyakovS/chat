@@ -1,9 +1,0 @@
-.send-message-form {
-    & &__field {
-        padding: 7px 20px;
-        margin-right: 10px;
-
-        background-color: var(--light-gray);
-        border-radius: 30px;
-    }
-}

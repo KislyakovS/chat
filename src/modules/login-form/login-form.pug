@@ -1,8 +1,0 @@
-include ../../components/field/field.pug
-include ../../components/button/button.pug
-
-mixin loginForm()
-    form().form&attributes(attributes)
-        +field('Invalid login', 'form__field w-100')(type='text' placeholder='Login' name='login') Login
-        +field('Invalid password', 'form__field w-100')(type='password' placeholder='Password' name='password') Password
-        +button(type='submit').form__submit.w-100 Sign in

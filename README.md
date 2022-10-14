@@ -24,6 +24,18 @@ Start production server:
 npm run start
 ```
 
+Lint:
+```sh
+npm run lint
+
+npm run lint:fix
+```
+
+Cleaning the folder `build`:
+```sh
+npm run clear:build
+```
+
 ## Development
 
 Start development server:
