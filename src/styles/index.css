@@ -14,7 +14,9 @@
 @import '../components/back/back.css';
 @import '../components/avatar/avatar.css';
 @import '../components/change-avatar/change-avatar.css';
+@import '../components/error-message-page/error-message-page.css';
 @import '../components/form/form.css';
+@import '../components/box/box.css';
 @import '../pages/personal/components/details/details.css';
 @import '../pages/messager/components/user/user.css';
 @import '../pages/messager/components/search/search.css';
