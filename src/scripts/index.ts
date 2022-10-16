@@ -1,5 +1,9 @@
-import { SignUp } from '../pages';
+import { SignUp, Login } from '../pages';
+import router from '../core/router';
 
 const app = document.querySelector('#app') as HTMLElement;
 
-app.append(new SignUp().element);
+router
+	.use('/', new Login())
+	.use('/sign-up', new SignUp())
+	.start(app);
