@@ -11,8 +11,8 @@ export default class Navigation extends Component {
 		return `
 		<nav>
 			<ul class="list">
-				<li><Link>Change Data</Link></li>
-				<li><Link>Change Password</Link></li>
+				<li><Link href="/settings">Change Data</Link></li>
+				<li><Link href="/password">Change Password</Link></li>
 				<li><Link isAccent="true">Exit</Link></li>
 			</ul>
 		</nav>
