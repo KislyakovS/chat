@@ -1,15 +1,28 @@
 import Component from '../../core/component';
+import router from '../../core/router';
 
 import clsx from '../../utils/clsx';
 
+import type { Path } from '../../types';
+
 type Props = {
 	className?: string,
-	href: string,
+	href: Path,
 	isAccent?: boolean,
 	children: string
 }
 
 export default class Link extends Component<Props> {
+	onClickLink(e: Event) {
+		e.preventDefault();
+
+		router.go(this.props.href);
+	}
+
+	protected listeners() {
+		return { onClickLink: this.onClickLink.bind(this) };
+	}
+
 	render() {
 		const {
 			isAccent, className, href, children,
@@ -17,6 +30,6 @@ export default class Link extends Component<Props> {
 
 		const cls = clsx('link', { link_accent: isAccent }, className);
 
-		return `<a class="${cls}" href="${href}">${children}</a>`;
+		return `<a class="${cls}" href="${href}" onClick="onClickLink">${children}</a>`;
 	}
 }
