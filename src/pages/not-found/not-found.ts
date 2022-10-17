@@ -1,8 +1,15 @@
-import Component from '../../core/component';
+import Page from '../../core/page';
 
 import { ErrorMessagePage } from '../../components';
 
-export default class NotFound extends Component {
+export default class NotFound extends Page {
+	get meta() {
+		return {
+			title: 'Not found :(',
+			description: 'We could not find this page :(',
+		};
+	}
+
 	protected children() {
 		return { ErrorMessagePage };
 	}

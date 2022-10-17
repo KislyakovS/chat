@@ -1,10 +1,17 @@
-import Component from '../../core/component';
+import Page from '../../core/page';
 
 import { Profile as Layout } from '../../layouts';
 
 import { PersonalChangeForm } from '../../modules/forms';
 
-export default class PersonalChange extends Component {
+export default class PersonalChange extends Page {
+	get meta() {
+		return {
+			title: 'Change profile data',
+			description: 'Change profile data.',
+		};
+	}
+
 	protected children() {
 		return { Layout, PersonalChangeForm };
 	}

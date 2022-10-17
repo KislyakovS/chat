@@ -1,9 +1,16 @@
-import Component from '../../core/component';
+import Page from '../../core/page';
 
 import { Box, Link } from '../../components';
 import { SignUpForm } from '../../modules/forms';
 
-export default class SignUp extends Component {
+export default class SignUp extends Page {
+	get meta() {
+		return {
+			title: 'Sign up',
+			description: 'Sign up chat.',
+		};
+	}
+
 	protected children() {
 		return { Box, SignUpForm, Link };
 	}

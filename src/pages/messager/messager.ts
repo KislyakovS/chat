@@ -1,11 +1,18 @@
-import Component from '../../core/component';
+import Page from '../../core/page';
 
 import {
  User, Search, Dialogs, Messages,
 } from './components';
 import { SendMessageForm } from '../../modules/forms';
 
-export default class Messager extends Component {
+export default class Messager extends Page {
+	get meta() {
+		return {
+			title: 'Messager',
+			description: 'You messager.',
+		};
+	}
+
 	protected children() {
 		return {
  User, Search, Dialogs, Messages, SendMessageForm,
