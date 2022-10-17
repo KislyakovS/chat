@@ -126,10 +126,10 @@
 import Template from '../utils/template';
 import EventBus from './event-bus';
 
-import type { Listeners, Type } from '../types';
+import type { Listeners, Constructor } from '../types';
 
 type EventName = keyof typeof Component.eventName;
-export type Children = Record<string, Type<Component>>;
+export type Children = Record<string, Constructor<Component>>;
 export type DefaultProps = { children?: string };
 export type DefaultState = Record<string, unknown>;
 
@@ -186,7 +186,7 @@ export default abstract class Component<
 		});
 	}
 
-	private _render() {
+	protected _render() {
 		this._template = this._compile();
 		this._element = Template.toDOM(this._template);
 

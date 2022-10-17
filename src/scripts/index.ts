@@ -6,10 +6,10 @@ import router from '../core/router';
 const app = document.querySelector('#app') as HTMLElement;
 
 router
-	.use('/', new Login())
-	.use('/sign-up', new SignUp())
-	.use('/messenger', new Messager())
-	.use('/personal', new Personal())
-	.use('/settings', new PersonalChange())
-	.use('/password', new PasswordChange())
+	.use('/', Login)
+	.use('/sign-up', SignUp)
+	.use('/messenger', Messager)
+	.use('/personal', Personal)
+	.use('/settings', PersonalChange)
+	.use('/password', PasswordChange)
 	.start(app);
