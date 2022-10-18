@@ -5,6 +5,4 @@ export type InputType = 'button' | 'checkbox' | 'color' | 'date' | 'datetime-loc
 export type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 export type Listeners = Record<string, EventListener>;
 export type Path = `/${string}`;
-export interface Constructor<T> extends Function {
-    new (...args: unknown[]): T;
-}
+export type Constructor<T> = new (...args: unknown[]) => T;
