@@ -1,5 +1,5 @@
 import {
- SignUp, Login, Messager, PersonalChange, PasswordChange, Personal,
+ SignUp, Login, Messager, PersonalChange, PasswordChange, Personal, NotFound,
 } from '../pages';
 import router from '../core/router';
 
@@ -12,4 +12,5 @@ router
 	.use('/personal', Personal)
 	.use('/settings', PersonalChange)
 	.use('/password', PasswordChange)
+	.notFound(NotFound)
 	.start(app);
