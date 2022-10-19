@@ -11,22 +11,22 @@ type Url = string;
 
 class HTTP {
 	public get<T>(url: Url, options?: OptionsWithoutData) {
-		return this.request<T>(url, 'GET', options);
+		return this._request<T>(url, 'GET', options);
 	}
 
 	public post<T>(url: Url, options: OptionsWithData) {
-		return this.request<T>(url, 'POST', options);
+		return this._request<T>(url, 'POST', options);
 	}
 
 	public put<T>(url: Url, options?: OptionsWithData) {
-		return this.request<T>(url, 'PUT', options);
+		return this._request<T>(url, 'PUT', options);
 	}
 
 	public delete<T>(url: Url, options?: OptionsWithoutData) {
-		return this.request<T>(url, 'DELETE', options);
+		return this._request<T>(url, 'DELETE', options);
 	}
 
-	private request<T>(url: Url, method: HTTPMethod, options?: Options) {
+	private _request<T>(url: Url, method: HTTPMethod, options?: Options) {
 		return new Promise<T>((resolve, reject) => {
 			const xhr = new XMLHttpRequest();
 
