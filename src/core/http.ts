@@ -1,15 +1,25 @@
 import type { HTTPMethod } from '../types';
 
+type Params = Record<string, any>;
 type Options = {
 	header?: Record<string, string>,
-	data?: Record<string, unknown>,
+	params?: Params
+	data?: Record<string, any>,
 }
-
+type Config = {
+	baseURL: Url,
+}
 type OptionsWithData = Options & Required<Pick<Options, 'data'>>;
 type OptionsWithoutData = Omit<Options, 'data'>;
 type Url = string;
 
 class HTTP {
+	private _config?: Config;
+
+	public setup(config: Config) {
+		this._config = config;
+	}
+
 	public get<T>(url: Url, options?: OptionsWithoutData) {
 		return this._request<T>(url, 'GET', options);
 	}
@@ -30,7 +40,15 @@ class HTTP {
 		return new Promise<T>((resolve, reject) => {
 			const xhr = new XMLHttpRequest();
 
-			xhr.open(method, url);
+			let uri: string;
+
+			if (options?.params) {
+				uri = this._createUri(url, options?.params);
+			} else {
+				uri = this._createUri(url);
+			}
+
+			xhr.open(method, uri);
 
 			if (options?.header) {
 				Object.entries(options.header).forEach(([key, value]) => {
@@ -52,6 +70,31 @@ class HTTP {
 				xhr.send();
 			}
 		});
+	}
+
+	private _createUri(url: string, params: Params = {}) {
+		const query = this._createQuery(params);
+		url += query ? `?${query}` : '';
+
+		if (this._isHttpScheme(url)) {
+			return url;
+		}
+
+		let baseUrl = window.location.origin;
+
+		if (this._config?.baseURL) {
+			baseUrl = this._config.baseURL;
+		}
+
+		return new URL(url, baseUrl).href;
+	}
+
+	private _createQuery(params: Params) {
+		return new URLSearchParams(params).toString();
+	}
+
+	private _isHttpScheme(url: string) {
+		return /http(s):\/\//.test(url);
 	}
 }
 
