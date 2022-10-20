@@ -5,6 +5,7 @@ type Options = {
 	header?: Record<string, string>,
 	params?: Params
 	data?: Record<string, any>,
+	isCredentials?: boolean,
 }
 type Config = {
 	baseURL: Url,
@@ -56,6 +57,10 @@ class HTTP {
 				});
 			}
 
+			if (options?.isCredentials) {
+				xhr.withCredentials = true;
+			}
+
 			xhr.addEventListener('load', () => {
 				resolve(JSON.parse(xhr.response));
 			});
@@ -65,7 +70,13 @@ class HTTP {
 			xhr.addEventListener('timeout', reject);
 
 			if (options?.data) {
-				xhr.send(JSON.stringify(options.data));
+				if (options.data instanceof FormData) {
+					xhr.setRequestHeader('content-type', 'multipart/form-data');
+					xhr.send(options.data);
+				} else {
+					xhr.setRequestHeader('content-type', 'application/json');
+					xhr.send(JSON.stringify(options.data));
+				}
 			} else {
 				xhr.send();
 			}
@@ -86,7 +97,7 @@ class HTTP {
 			baseUrl = this._config.baseURL;
 		}
 
-		return new URL(url, baseUrl).href;
+		return baseUrl + url;
 	}
 
 	private _createQuery(params: Params) {
