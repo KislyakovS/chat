@@ -55,6 +55,10 @@ button.reset {
     margin-top: 15px;
 }
 
+.mt-20 {
+	margin-top: 20px;
+}
+
 /* size */
 
 .w-100 {
