@@ -25,3 +25,18 @@ export const isLength = (min: number, max: number) => (str: string) => {
 export const isCapitalize = (str: string) => CAPITALIZE_REGEXP.test(str);
 export const isLatinAlpha = (str: string) => LATIN_ALPHA_REGEXP.test(str);
 export const isLatinAlphaNumeric = (str: string) => LATIN_ALPHANUMERIC_REGEXP.test(str);
+
+export const isLogin = (str: string) => isValid(str, [
+	isLength(3, 20),
+	isLatinAlphaNumeric,
+]);
+export const isPassword = (str: string) => isValid(str, [
+	isLength(8, 40),
+	isLatinAlphaNumeric,
+	comprisesNumeric,
+	comprisesUpperCase,
+]);
+export const isUserName = (str: string) => isValid(str, [
+	isCapitalize,
+	isLatinAlpha,
+]);
