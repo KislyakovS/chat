@@ -6,3 +6,4 @@ export type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 export type Listeners = Record<string, EventListener>;
 export type Path = `/${string}`;
 export type Constructor<T> = new (...args: unknown[]) => T;
+export type ErrorResponse = { reason: string }
