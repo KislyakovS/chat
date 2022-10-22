@@ -18,14 +18,17 @@
 @import '../components/error-message-page/error-message-page.css';
 @import '../components/form/form.css';
 @import '../components/box/box.css';
-@import '../pages/personal/components/details/details.css';
+@import '../pages/profile/components/details/details.css';
 @import '../pages/messager/components/user/user.css';
 @import '../pages/messager/components/search/search.css';
-@import '../pages/messager/components/dialogs/dialogs.css';
+/* @import '../pages/messager/components/dialogs/dialogs.css'; */
 @import '../pages/messager/components/messages/messages.css';
 
 /* Modules */
 @import '../modules/forms/send-message/send-message.css';
+@import '../modules/dialogs/dialogs.css';
+/* @import '../modules/details/details.css'; */
+
 
 /* Pages */
 @import '../pages/messager/messager.css';

@@ -1,8 +1,10 @@
 import Page from '../../core/page';
 
 import {
- User, Search, Dialogs, Messages,
+ User, Search, Messages,
 } from './components';
+
+import Dialogs from '../../modules/dialogs';
 import { SendMessageForm } from '../../modules/forms';
 
 export default class Messager extends Page {
