@@ -4,10 +4,10 @@ import { Profile as Layout } from '../../layouts';
 
 import { Details, Navigation } from './components';
 
-export default class Personal extends Page {
+export default class Profile extends Page {
 	get meta() {
 		return {
-			title: 'Personal',
+			title: 'Profile',
 			description: 'Profile Information and Setup.',
 		};
 	}

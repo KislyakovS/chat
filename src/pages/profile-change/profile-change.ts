@@ -2,9 +2,9 @@ import Page from '../../core/page';
 
 import { Profile as Layout } from '../../layouts';
 
-import { PersonalChangeForm } from '../../modules/forms';
+import { ProfileChangeForm } from '../../modules/forms';
 
-export default class PersonalChange extends Page {
+export default class ProfileChange extends Page {
 	get meta() {
 		return {
 			title: 'Change profile data',
@@ -13,13 +13,13 @@ export default class PersonalChange extends Page {
 	}
 
 	protected children() {
-		return { Layout, PersonalChangeForm };
+		return { Layout, ProfileChangeForm };
 	}
 
 	render() {
 		return `
 		<Layout>
-			<PersonalChangeForm />
+			<ProfileChangeForm />
 		</Layout>
 		`;
 	}

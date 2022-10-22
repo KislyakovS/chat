@@ -1,5 +1,5 @@
 import {
- SignUp, Login, Messager, PersonalChange, PasswordChange, Personal, NotFound,
+ SignUp, Login, Messager, ProfileChange, PasswordChange, Profile, NotFound,
 } from '../pages';
 import router from '../core/router';
 import http from '../core/http';
@@ -10,8 +10,8 @@ router
 	.use('/', Login)
 	.use('/sign-up', SignUp)
 	.use('/messenger', Messager)
-	.use('/personal', Personal)
-	.use('/settings', PersonalChange)
+	.use('/profile', Profile)
+	.use('/settings', ProfileChange)
 	.use('/password', PasswordChange)
 	.notFound(NotFound)
 	.start(app);
