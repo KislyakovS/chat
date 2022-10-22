@@ -4,9 +4,11 @@ import {
  Form, ChangeAvatar, Field, Button, ErrorMessage,
 } from '../../../components';
 
-import { personalController } from '../../../controllers';
+import { profileChangeController } from '../../../controllers';
 
-export type PersonalChangeModel = {
+import formSerialize from '../../../utils/form-serialize';
+
+export type ProfileChangeModel = {
 	first_name: string,
 	second_name: string,
 	display_name: string,
@@ -19,17 +21,17 @@ type State = {
 	error?: string
 }
 
-export default class PersonalChangeForm extends Component<Record<string, unknown>, State> {
+export default class ProfileChangeForm extends Component<Record<string, unknown>, State> {
 	private async _onSubmit(e: Event) {
 		e.preventDefault();
 
 		const form = e.target as HTMLFormElement;
 
-		// try {
-		// 	await loginController.login(formSerialize<LoginModel>(form));
-		// } catch (error) {
-		// 	this.state.error = error.message;
-		// }
+		try {
+			await profileChangeController.change(formSerialize<ProfileChangeModel>(form));
+		} catch (error) {
+			this.state.error = error.message;
+		}
 	}
 
 	protected children() {

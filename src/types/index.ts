@@ -7,3 +7,13 @@ export type Listeners = Record<string, EventListener>;
 export type Path = `/${string}`;
 export type Constructor<T> = new (...args: unknown[]) => T;
 export type ErrorResponse = { reason: string }
+export type User = {
+	id: number,
+	first_name: string,
+	second_name: string,
+	display_name: string,
+	login: string,
+	email: string,
+	phone: string,
+	avatar: string,
+}
