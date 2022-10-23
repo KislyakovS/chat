@@ -1,5 +1,7 @@
 import type { HTTPMethod } from '../types';
 
+import isJSON from '../utils/is-json';
+
 type Params = Record<string, any>;
 type Options = {
 	header?: Record<string, string>,
@@ -62,7 +64,11 @@ class HTTP {
 			}
 
 			xhr.addEventListener('load', () => {
-				resolve(JSON.parse(xhr.response));
+				if (isJSON(xhr.response)) {
+					resolve(JSON.parse(xhr.response));
+				} else {
+					resolve(xhr.response);
+				}
 			});
 
 			xhr.addEventListener('error', reject);
