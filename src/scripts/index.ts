@@ -4,15 +4,17 @@ import {
 import router from '../core/router';
 import http from '../core/http';
 
+import { Routes } from '../constants';
+
 const app = document.querySelector('#app') as HTMLElement;
 
 router
-	.use('/', Login)
-	.use('/sign-up', SignUp)
-	.use('/messenger', Messager)
-	.use('/profile', Profile)
-	.use('/settings', ProfileChange)
-	.use('/password', PasswordChange)
+	.use(Routes.login, Login)
+	.use(Routes.signUp, SignUp)
+	.use(Routes.messenger, Messager)
+	.use(Routes.profile, Profile)
+	.use(Routes.settings, ProfileChange)
+	.use(Routes.password, PasswordChange)
 	.notFound(NotFound)
 	.start(app);
 

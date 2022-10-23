@@ -5,6 +5,7 @@ import router from '../core/router';
 import isErrorResponse from '../utils/is-error-response';
 import { isLogin, isPassword } from '../utils/validator';
 
+import { Routes } from '../constants';
 import type { LoginModel } from '../modules/forms/login';
 
 class LoginController {
@@ -23,7 +24,7 @@ class LoginController {
 			throw new Error(response.reason);
 		}
 
-		router.go('/messager');
+		router.go(Routes.messenger);
 	}
 
 	private _isValid(data: LoginModel) {

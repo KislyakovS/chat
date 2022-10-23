@@ -7,6 +7,7 @@ import {
 	isUserName, isLogin, isEmail, isRuMobilePhone, isPassword,
 } from '../utils/validator';
 
+import { Routes } from '../constants';
 import type { SignUpModel } from '../modules/forms/sign-up';
 
 class SignUpController {
@@ -25,7 +26,7 @@ class SignUpController {
 			throw new Error(response.reason);
 		}
 
-		router.go('/messager');
+		router.go(Routes.messenger);
 	}
 
 	private _isValid(data: SignUpModel) {
