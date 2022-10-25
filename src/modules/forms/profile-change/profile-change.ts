@@ -1,4 +1,4 @@
-import Component from '../../../core/component';
+import Component, { Events } from '../../../core/component';
 
 import {
  Form, ChangeAvatar, Field, Button, ErrorMessage,
@@ -40,8 +40,8 @@ export default class ProfileChangeForm extends Component<Record<string, unknown>
 		};
 	}
 
-	protected listeners() {
-		return { onSubmit: this._onSubmit.bind(this) };
+	protected events(): Events {
+		return [{ name: 'submit', listener: this._onSubmit.bind(this) }];
 	}
 
 	private get _hasError() {
@@ -50,7 +50,7 @@ export default class ProfileChangeForm extends Component<Record<string, unknown>
 
 	render() {
 		return `
-		<Form isTable="true" onSubmit="onSubmit">
+		<Form isTable="true" onSubmit="${this._onSubmit.name}">
 			<ChangeAvatar className="mb-40" />
 			<Field label="Email" isRow="true" type="email" name="email" placeholder="Email" />
 			<Field label="Login" isRow="true" type="text" name="login" placeholder="Login" />
@@ -58,7 +58,7 @@ export default class ProfileChangeForm extends Component<Record<string, unknown>
 			<Field label="Second Name" isRow="true" type="text" name="second_name" placeholder="Second name" />
 			<Field label="Name in chat" isRow="true" type="text" name="display_name" placeholder="Name in chat" />
 			<Field label="Phone" isRow="true" type="tel" name="phone" placeholder="Phone" />
-			<Button className="w-100">Save</Button>
+			<Button className="w-100" type="submit">Save</Button>
 			${this._hasError ? `<ErrorMessage className="mt-20">${this.state.error}</ErrorMessage>` : ''}
 		</Form>
 		`;

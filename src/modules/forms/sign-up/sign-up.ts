@@ -1,4 +1,4 @@
-import Component from '../../../core/component';
+import Component, { Events } from '../../../core/component';
 
 import {
 	Form, Field, Button, ErrorMessage,
@@ -40,8 +40,8 @@ export default class SignUpForm extends Component<Record<string, unknown>, State
 		};
 	}
 
-	protected listeners() {
-		return { onSubmit: this._onSubmit.bind(this) };
+	protected events(): Events {
+		return [{ name: 'submit', listener: this._onSubmit.bind(this) }];
 	}
 
 	private get _hasError() {
@@ -50,14 +50,14 @@ export default class SignUpForm extends Component<Record<string, unknown>, State
 
 	render() {
 		return `
-			<Form onSubmit="onSubmit">
+			<Form onSubmit="${this._onSubmit.name}">
 				<Field type="email" name="email" placeholder="Email" />
 				<Field type="text" name="login" placeholder="Login" />
 				<Field type="text" name="first_name" placeholder="Name" />
 				<Field type="text" name="second_name" placeholder="Second name" />
 				<Field type="tel" name="phone" placeholder="Phone" />
 				<Field type="password" name="password" placeholder="Password" />
-				<Button className="w-100">Sign up</Button>
+				<Button className="w-100" type="submit">Sign up</Button>
 				${this._hasError ? `<ErrorMessage className="mt-20">${this.state.error}</ErrorMessage>` : ''}
 			</Form>
 		`;

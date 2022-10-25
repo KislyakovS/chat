@@ -8,6 +8,10 @@ import { Routes } from '../constants';
 
 const app = document.querySelector('#app') as HTMLElement;
 
+if (process.env.CLIENT_API_URL) {
+	http.setup({ baseURL: process.env.CLIENT_API_URL });
+}
+
 router
 	.use(Routes.login, Login)
 	.use(Routes.signUp, SignUp)
@@ -17,7 +21,3 @@ router
 	.use(Routes.password, PasswordChange)
 	.notFound(NotFound)
 	.start(app);
-
-if (process.env.CLIENT_API_URL) {
-	http.setup({ baseURL: process.env.CLIENT_API_URL });
-}

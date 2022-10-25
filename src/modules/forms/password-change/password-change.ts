@@ -1,4 +1,4 @@
-import Component from '../../../core/component';
+import Component, { Events } from '../../../core/component';
 
 import {
 	Form, Field, Button, ErrorMessage,
@@ -37,8 +37,8 @@ export default class PasswordChangeForm extends Component<Record<string, unknown
 		};
 	}
 
-	protected listeners() {
-		return { onSubmit: this._onSubmit.bind(this) };
+	protected events(): Events {
+		return [{ name: 'submit', listener: this._onSubmit.bind(this) }];
 	}
 
 	private get _hasError() {
@@ -47,11 +47,11 @@ export default class PasswordChangeForm extends Component<Record<string, unknown
 
 	render() {
 		return `
-		<Form isTable="true" onSubmit="onSubmit">
+		<Form isTable="true" onSubmit="${this._onSubmit.name}">
 			<Field label="Old password" isRow="true" type="password" name="oldPassword" placeholder="Old password" />
 			<Field label="New password" isRow="true" type="password" name="newPassword" placeholder="New password" />
 			<Field label="Repeat the new password" isRow="true" type="password" name="repeatPassword" placeholder="Repeat password" />
-			<Button className="w-100">Save</Button>
+			<Button className="w-100" type="submit">Save</Button>
 			${this._hasError ? `<ErrorMessage className="mt-20">${this.state.error}</ErrorMessage>` : ''}
 		</Form>
 		`;

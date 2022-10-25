@@ -22,7 +22,7 @@ export default class IconButton extends Component<Props> {
 		const { onClick } = this.props;
 
 		return `
-		<button onClick="${onClick}" class="button button_round">
+		<button click="${onClick}" class="button button_round">
 			${this.getIcon()}
 		</button>
 		`;

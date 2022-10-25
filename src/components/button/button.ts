@@ -2,14 +2,22 @@ import Component from '../../core/component';
 
 import clsx from '../../utils/clsx';
 
-export default class Button extends Component {
+import type { ButtonType } from '../../types';
+
+type Props = {
+	className?: string,
+	type?: ButtonType,
+	children: string,
+}
+
+export default class Button extends Component<Props> {
 	render() {
-		const { className, children } = this.props;
+		const { className, type = 'button', children } = this.props;
 
 		const cls = clsx('button', className);
 
 		return `
-		<button class="${cls}">
+		<button class="${cls}" type="${type}">
 			${children}
 		</button>
 		`;

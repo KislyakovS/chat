@@ -11,7 +11,7 @@ export default class Form extends Component {
 		const cls = clsx('form', className, { form_table: isTable });
 
 		return `
-		<form class="${cls}" onSubmit="${onSubmit}">
+		<form class="${cls}" submit="${onSubmit}">
 			${children}
 		</form>
 		`;

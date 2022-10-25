@@ -1,4 +1,4 @@
-import Component from '../../core/component';
+import Component, { Events } from '../../core/component';
 import router from '../../core/router';
 
 import clsx from '../../utils/clsx';
@@ -13,14 +13,14 @@ type Props = {
 }
 
 export default class Link extends Component<Props> {
-	onClickLink(e: Event) {
+	private _onClickLink(e: Event) {
 		e.preventDefault();
 
 		router.go(this.props.href);
 	}
 
-	protected listeners() {
-		return { onClickLink: this.onClickLink.bind(this) };
+	protected events(): Events {
+		return [{ name: 'click', listener: this._onClickLink.bind(this) }];
 	}
 
 	render() {
@@ -30,6 +30,6 @@ export default class Link extends Component<Props> {
 
 		const cls = clsx('link', { link_accent: isAccent }, className);
 
-		return `<a class="${cls}" href="${href}" onClick="onClickLink">${children}</a>`;
+		return `<a class="${cls}" href="${href}" click="${this._onClickLink.name}">${children}</a>`;
 	}
 }
