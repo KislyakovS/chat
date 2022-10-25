@@ -5,7 +5,12 @@ import getElementByAttribute from '../utils/get-element-by-attribute';
 
 import type { Constructor } from '../types';
 
-type EventName = keyof typeof Component.eventName;
+enum EventName {
+	render = 'render',
+	rerender = 'rerender',
+	componentDidMount = 'componentDidMount',
+	componentDidUpdate = 'componentDidUpdate',
+}
 export type Children = Record<string, Constructor<Component>>;
 type Event = {
 	name: keyof HTMLElementEventMap,
@@ -19,13 +24,6 @@ export default abstract class Component<
 	P extends DefaultProps = DefaultProps,
 	S extends DefaultState = DefaultState
 > {
-	static readonly eventName = {
-		render: 'render',
-		rerender: 'rerender',
-		componentDidMount: 'componentDidMount',
-		componentDidUpdate: 'componentDidUpdate',
-	} as const;
-
 	private readonly eventBus = new EventBus<EventName>();
 	protected props: P;
 	protected state: S;
@@ -42,14 +40,14 @@ export default abstract class Component<
 
 		this._registerEvents();
 
-		this.eventBus.emite(Component.eventName.render);
+		this.eventBus.emite(EventName.render);
 	}
 
 	private _registerEvents() {
-		this.eventBus.on(Component.eventName.render, this._render.bind(this));
-		this.eventBus.on(Component.eventName.rerender, this._rerender.bind(this));
-		this.eventBus.on(Component.eventName.componentDidMount, this._componentDidMount.bind(this));
-		this.eventBus.on(Component.eventName.componentDidUpdate, this._componentDidUpdate.bind(this));
+		this.eventBus.on(EventName.render, this._render.bind(this));
+		this.eventBus.on(EventName.rerender, this._rerender.bind(this));
+		this.eventBus.on(EventName.componentDidMount, this._componentDidMount.bind(this));
+		this.eventBus.on(EventName.componentDidUpdate, this._componentDidUpdate.bind(this));
 	}
 
 	private _makeStateProxy(state: S) {
@@ -57,7 +55,7 @@ export default abstract class Component<
 			set: (target, key, value) => {
 				if (!Object.is(target[key as keyof S], value)) {
 					target[key as keyof S] = value;
-					this.eventBus.emite(Component.eventName.rerender);
+					this.eventBus.emite(EventName.rerender);
 
 					return true;
 				}
@@ -72,7 +70,7 @@ export default abstract class Component<
 
 		this._addEventListeners();
 
-		this.eventBus.emite(Component.eventName.componentDidMount);
+		this.eventBus.emite(EventName.componentDidMount);
 	}
 
 	private _rerender() {
@@ -84,7 +82,7 @@ export default abstract class Component<
 
 		this._addEventListeners();
 
-		this.eventBus.emite(Component.eventName.componentDidUpdate);
+		this.eventBus.emite(EventName.componentDidUpdate);
 	}
 
 	private _addEventListeners() {
