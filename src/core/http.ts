@@ -93,7 +93,7 @@ class HTTP {
 		const query = this._createQuery(params);
 		url += query ? `?${query}` : '';
 
-		if (this._isHttpScheme(url)) {
+		if (this._hasHttpScheme(url)) {
 			return url;
 		}
 
@@ -110,7 +110,7 @@ class HTTP {
 		return new URLSearchParams(params).toString();
 	}
 
-	private _isHttpScheme(url: string) {
+	private _hasHttpScheme(url: string) {
 		return /http(s):\/\//.test(url);
 	}
 }
