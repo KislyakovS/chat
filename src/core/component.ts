@@ -1,10 +1,17 @@
 import Template from '../utils/template';
 import EventBus from './event-bus';
 
-import type { Listeners, Constructor } from '../types';
+import getElementByAttribute from '../utils/get-element-by-attribute';
+
+import type { Constructor } from '../types';
 
 type EventName = keyof typeof Component.eventName;
 export type Children = Record<string, Constructor<Component>>;
+type Event = {
+	name: keyof HTMLElementEventMap,
+	listener: EventListener
+};
+export type Events = Event[];
 export type DefaultProps = { children?: string };
 export type DefaultState = Record<string, unknown>;
 
@@ -23,15 +30,15 @@ export default abstract class Component<
 	protected props: P;
 	protected state: S;
 	private readonly _children: Children;
-	private readonly _listeners: Listeners;
+	private readonly _events: Events;
 	private _element: HTMLElement;
 
-	constructor(props = {} as P, { state = {} as S, children = {}, listeners = {} } = {}) {
+	constructor(props = {} as P, { state = {} as S, children = {}, events = [] } = {}) {
 		this.props = props;
 		this.state = this._makeStateProxy(state);
 
 		this._children = children;
-		this._listeners = listeners;
+		this._events = events;
 
 		this._registerEvents();
 
@@ -48,7 +55,7 @@ export default abstract class Component<
 	private _makeStateProxy(state: S) {
 		return new Proxy(state, {
 			set: (target, key, value) => {
-				if (target[key as keyof S] !== value) {
+				if (!Object.is(target[key as keyof S], value)) {
 					target[key as keyof S] = value;
 					this.eventBus.emite(Component.eventName.rerender);
 
@@ -63,15 +70,44 @@ export default abstract class Component<
 	protected _render() {
 		this._element = this._compile();
 
+		this._addEventListeners();
+
 		this.eventBus.emite(Component.eventName.componentDidMount);
 	}
 
 	private _rerender() {
+		this._removeEventListeners();
+
 		const newElement = this._compile();
 		this._element.replaceWith(newElement);
 		this._element = newElement;
 
+		this._addEventListeners();
+
 		this.eventBus.emite(Component.eventName.componentDidUpdate);
+	}
+
+	private _addEventListeners() {
+		this.getEvents().forEach((event) => {
+			const { name, listener } = event;
+			const element = getElementByAttribute(this.element, name, listener.name.replace('bound ', ''));
+
+			if (element) {
+				element.removeAttribute(name);
+				element.addEventListener(name, listener);
+			}
+		});
+	}
+
+	private _removeEventListeners() {
+		this.getEvents().forEach((event) => {
+			const { name, listener } = event;
+			const element = getElementByAttribute(this.element, name, listener.name.replace('bound ', ''));
+
+			if (element) {
+				element.removeEventListener(name, listener);
+			}
+		});
 	}
 
 	private _componentDidMount() {
@@ -83,7 +119,7 @@ export default abstract class Component<
 	}
 
 	private _compile() {
-		return Template.compile(this.render(), this.getChildren());
+		return Template.compile(this.render(), this.getChildren(), this.getEvents());
 	}
 
 	public getChildren() {
@@ -92,10 +128,10 @@ export default abstract class Component<
 		return { ...children, ...this._children };
 	}
 
-	public getListeners() {
-		const events = this.listeners?.() || {};
+	public getEvents() {
+		const events = this.events?.() || [];
 
-		return { ...events, ...this._listeners };
+		return [...events, ...this._events];
 	}
 
 	public get element() {
@@ -103,7 +139,7 @@ export default abstract class Component<
 	}
 
 	protected children?(): Children;
-	protected listeners?(): Listeners;
+	protected events?(): Events;
 	protected componentDidMount?(): void;
 	protected componentDidUpdate?(): void;
 
