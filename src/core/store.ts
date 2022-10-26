@@ -13,7 +13,7 @@ class Store extends EventBus<EventName> {
 	public set(path: string, value: unknown) {
 		set(this._state, path, value);
 
-		this.emite(EventName.update);
+		this.emite(EventName.update, this._state);
 	}
 	public get(path: string) {
 		return get(this._state, path);

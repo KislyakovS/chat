@@ -32,8 +32,8 @@ export default abstract class Component<
 	private _element: HTMLElement;
 
 	constructor(props = {} as P, { state = {} as S, children = {}, events = [] } = {}) {
-		this.props = props;
-		this.state = this._makeStateProxy(state);
+		this.props = this._makeDataProxy(props);
+		this.state = this._makeDataProxy(state);
 
 		this._children = children;
 		this._events = events;
@@ -50,11 +50,11 @@ export default abstract class Component<
 		this.eventBus.on(EventName.componentDidUpdate, this._componentDidUpdate.bind(this));
 	}
 
-	private _makeStateProxy(state: S) {
-		return new Proxy(state, {
+	private _makeDataProxy<T extends Record<string, unknown>>(state: T) {
+		return new Proxy<T>(state, {
 			set: (target, key, value) => {
-				if (!Object.is(target[key as keyof S], value)) {
-					target[key as keyof S] = value;
+				if (!Object.is(target[key as keyof T], value)) {
+					target[key as keyof T] = value;
 					this.eventBus.emite(EventName.rerender);
 
 					return true;
@@ -134,6 +134,10 @@ export default abstract class Component<
 
 	public get element() {
 		return this._element;
+	}
+
+	protected setProps(nextProps: Partial<P>) {
+		Object.assign(this.props, nextProps);
 	}
 
 	protected children?(): Children;
