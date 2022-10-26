@@ -1,7 +1,6 @@
 import http from '../core/http';
 
 import type { ErrorResponse } from '../types';
-
 import type { LoginModel } from '../modules/forms/login';
 
 export type SignUpModel = {
@@ -12,7 +11,6 @@ export type SignUpModel = {
 	phone: string,
 	password: string
 }
-
 type ResponseSignUp = {
 	id: number
 }
