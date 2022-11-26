@@ -7,6 +7,8 @@ import {
 import Dialogs from '../../modules/dialogs';
 import { SendMessageForm } from '../../modules/forms';
 
+import { profileController } from '../../controllers';
+
 export default class Messager extends Page {
 	get meta() {
 		return {
@@ -19,6 +21,11 @@ export default class Messager extends Page {
 		return {
  User, Search, Dialogs, Messages, SendMessageForm,
 };
+	}
+
+	protected componentDidMount(): void {
+		// console.log('mount');
+		profileController.requestProfile();
 	}
 
 	render() {

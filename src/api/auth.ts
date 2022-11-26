@@ -2,15 +2,8 @@ import http from '../core/http';
 
 import type { ErrorResponse } from '../types';
 import type { LoginModel } from '../modules/forms/login';
+import type { SignUpModel } from '../modules/forms/sign-up';
 
-export type SignUpModel = {
-	first_name: string,
-	second_name: string,
-	login: string,
-	email: string,
-	phone: string,
-	password: string
-}
 type ResponseSignUp = {
 	id: number
 }

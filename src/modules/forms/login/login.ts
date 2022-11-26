@@ -7,6 +7,7 @@ import {
 import { loginController } from '../../../controllers';
 
 import formSerialize from '../../../utils/form-serialize';
+import connect from '../../../utils/connect';
 
 export type LoginModel = {
 	login: string,
@@ -17,7 +18,7 @@ type State = {
 	error?: string
 }
 
-export default class LoginForm extends Component<Record<string, unknown>, State> {
+class LoginForm extends Component<Record<string, unknown>, State> {
 	private async _onSubmit(e: Event) {
 		e.preventDefault();
 
@@ -55,3 +56,5 @@ export default class LoginForm extends Component<Record<string, unknown>, State>
 		`;
 	}
 }
+
+export default connect(LoginForm, (state) => ({ user: state.user }));
