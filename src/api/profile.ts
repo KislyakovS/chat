@@ -6,7 +6,7 @@ import type { PasswordChangeModel } from '../modules/forms/password-change';
 
 class ProfileAPI {
 	public get() {
-		return http.get<User | ErrorResponse>('/auth/user');
+		return http.get<User | ErrorResponse>('/auth/user', { isCredentials: true });
 	}
 
 	public changeData(data: ProfileChangeModel) {
