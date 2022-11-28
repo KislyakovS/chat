@@ -19,6 +19,10 @@ class Store extends EventBus<StoreEventName> {
 	public get(path: string) {
 		return get(this._state, path);
 	}
+
+	public get state() {
+		return this._state;
+	}
 }
 
 export default new Store();
