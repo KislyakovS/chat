@@ -15,6 +15,8 @@ class LoginController {
 		}
 
 		await this._request(data);
+
+		router.go(Routes.messenger);
 	}
 
 	private async _request(data: LoginModel) {
@@ -23,8 +25,6 @@ class LoginController {
 		if (isErrorResponse(response)) {
 			throw new Error(response.reason);
 		}
-
-		router.go(Routes.messenger);
 	}
 
 	private _isValid(data: LoginModel) {

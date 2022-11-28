@@ -24,7 +24,6 @@ export default class Messager extends Page {
 	}
 
 	protected componentDidMount(): void {
-		// console.log('mount');
 		profileController.requestProfile();
 	}
 

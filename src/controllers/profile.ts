@@ -1,19 +1,20 @@
 import profileAPI from '../api/profile';
 
 import router from '../core/router';
+import store from '../core/store';
 
 import isErrorResponse from '../utils/is-error-response';
+import { Routes } from '../constants';
 
 class ProfileController {
 	public async requestProfile() {
 		const response = await profileAPI.get();
 
 		if (isErrorResponse(response)) {
-			// throw new Error(response.reason);
-			router.go('/');
+			router.go(Routes.login);
 		}
 
-		console.log(response);
+		store.set('user', response);
 	}
 }
 
