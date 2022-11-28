@@ -8,6 +8,7 @@ import Dialogs from '../../modules/dialogs';
 import { SendMessageForm } from '../../modules/forms';
 
 import { profileController } from '../../controllers';
+import { Routes } from '../../constants';
 
 export default class Messager extends Page {
 	get meta() {
@@ -31,7 +32,7 @@ export default class Messager extends Page {
 		return `
 		<div class="messager">
 			<aside class="messager__aside">
-				<User name="Alexandr" />
+				<User name="Alexandr" href="${Routes.profile}" />
 				<div class="messager__search">
 					<Search />
 				</div>

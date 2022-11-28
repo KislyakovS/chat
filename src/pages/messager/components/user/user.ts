@@ -8,10 +8,12 @@ export default class User extends Component {
 	}
 
 	render() {
+		const { name, href } = this.props;
+
 		return `
-		<a class="user">
+		<a class="user" href="${href}">
 			<Avatar size="35px" />
-			<span>${this.props.name}</span>
+			<span>${name}</span>
 		</a>
 		`;
 	}
