@@ -1,60 +1,66 @@
 {
-  "name": "chat",
-  "version": "0.1.0",
-  "description": "Chat",
-  "scripts": {
-    "start": "ts-node ./server.ts",
-    "dev": "npm run clear:build && parcel --port 3000 --dist-dir ./build",
-    "build": "npm run clear:build && parcel build --dist-dir ./build",
-    "clear:build": "rimraf ./build",
-    "lint": "eslint './src/**/*.{js,ts}'",
-    "lint:fix": "eslint './src/**/*.{js,ts}' --fix"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KislyakovS/chat.git"
-  },
-  "keywords": [],
-  "author": "Alexandr Kislyakov <kislyakov.sk@yandex.ru>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KislyakovS/chat/issues"
-  },
-  "homepage": "https://github.com/KislyakovS/chat#readme",
-  "engines": {
-    "node": ">=16"
-  },
-  "devDependencies": {
-    "@parcel/transformer-pug": "^2.7.0",
-    "@types/express": "^4.17.13",
-    "@types/node": "^18.7.16",
-    "@types/uuid": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "^5.40.0",
-    "dotenv": "^16.0.2",
-    "eslint": "^8.23.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "express": "^4.18.1",
-    "parcel": "^2.7.0",
-    "postcss": "^8.4.16",
-    "postcss-import": "^15.0.0",
-    "postcss-nested": "^5.0.6",
-    "postcss-url": "^10.1.3",
-    "process": "^0.11.10",
-    "rimraf": "^3.0.2",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.8.3"
-  },
-  "targets": {
-    "frontend": {
-      "context": "browser",
-      "source": [
-        "static/index.pug"
-      ]
+    "name": "chat",
+    "version": "0.1.0",
+    "description": "Chat",
+    "scripts": {
+        "start": "ts-node ./server.ts",
+        "dev": "npm run clear:build && parcel --port 3000 --dist-dir ./build",
+        "build": "npm run clear:build && parcel build --dist-dir ./build",
+        "clear:build": "rimraf ./build",
+        "lint": "eslint './src/**/*.{js,ts}'",
+        "lint:fix": "eslint './src/**/*.{js,ts}' --fix",
+        "test": "./node_modules/.bin/mocha"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KislyakovS/chat.git"
+    },
+    "keywords": [],
+    "author": "Alexandr Kislyakov <kislyakov.sk@yandex.ru>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/KislyakovS/chat/issues"
+    },
+    "homepage": "https://github.com/KislyakovS/chat#readme",
+    "engines": {
+        "node": ">=16"
+    },
+    "devDependencies": {
+        "@babel/register": "^7.18.9",
+        "@parcel/transformer-pug": "^2.7.0",
+        "@types/chai": "^4.3.4",
+        "@types/express": "^4.17.13",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "^18.7.16",
+        "@types/uuid": "^8.3.4",
+        "@typescript-eslint/eslint-plugin": "^5.40.0",
+        "chai": "^4.3.7",
+        "dotenv": "^16.0.2",
+        "eslint": "^8.23.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "express": "^4.18.1",
+        "mocha": "^10.1.0",
+        "parcel": "^2.7.0",
+        "postcss": "^8.4.16",
+        "postcss-import": "^15.0.0",
+        "postcss-nested": "^5.0.6",
+        "postcss-url": "^10.1.3",
+        "process": "^0.11.10",
+        "rimraf": "^3.0.2",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.8.3"
+    },
+    "targets": {
+        "frontend": {
+            "context": "browser",
+            "source": [
+                "static/index.pug"
+            ]
+        }
+    },
+    "@parcel/transformer-js": {
+        "inlineEnvironment": [
+            "CLIENT_*"
+        ]
     }
-  },
-  "@parcel/transformer-js": {
-    "inlineEnvironment": [
-      "CLIENT_*"
-    ]
-  }
 }
