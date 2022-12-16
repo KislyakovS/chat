@@ -1,135 +1,22 @@
-// import { v4 as uuidv4 } from 'uuid';
-
-// import EventBus from './event-bus';
-// import { compileTemplatePug } from '../utils';
-
-// import type { ElementEventName } from '../types';
-
-// type EventName = keyof typeof Component.eventName;
-// export type DefaultProps = {
-// 	events?: Partial<Record<ElementEventName, EventListenerOrEventListenerObject>>
-// 	children?: Component[]
-// }
-
-// export default abstract class Component<T extends DefaultProps = Record<string, unknown>> {
-// 	static eventName = {
-// 		render: 'render',
-// 		rerender: 'rerender',
-// 		componentDidMount: 'componentDidMount',
-// 		componentDidUpdate: 'componentDidUpdate',
-// 	} as const;
-// 	public readonly id = uuidv4();
-
-// 	private readonly eventBus: EventBus<EventName>;
-// 	protected props: T;
-// 	private readonly _template: string;
-// 	private _element: HTMLElement;
-
-// 	constructor(template: string, props: T = {} as T) {
-// 		this.eventBus = new EventBus();
-// 		this.props = this._makePropsProxy(props);
-// 		this._template = template;
-
-// 		this._registerEvents();
-
-// 		this.eventBus.emite(Component.eventName.render);
-// 	}
-
-// 	private _makePropsProxy(props: T) {
-// 		return new Proxy(props, {
-// 			set: (target, key, value) => {
-// 				target[key as keyof T] = value;
-
-// 				this.eventBus.emite(Component.eventName.rerender);
-// 				return true;
-// 			},
-// 		});
-// 	}
-
-// 	private _registerEvents() {
-// 		this.eventBus.on(Component.eventName.render, this._render.bind(this));
-// 		this.eventBus.on(Component.eventName.rerender, this._rerender.bind(this));
-// 		this.eventBus.on(Component.eventName.componentDidMount, this._componentDidMount.bind(this));
-// 		this.eventBus.on(Component.eventName.componentDidUpdate, this._componentDidUpdate.bind(this));
-// 	}
-
-// 	private _render() {
-// 		this._element = this._compile();
-
-// 		this._addEventListener();
-
-// 		this.eventBus.emite(Component.eventName.componentDidMount);
-// 	}
-
-// 	private _rerender() {
-// 		this._removeEventListener();
-
-// 		const newElement = this._compile();
-// 		this._element.replaceWith(newElement);
-// 		this._element = newElement;
-
-// 		this._addEventListener();
-
-// 		this.eventBus.emite(Component.eventName.componentDidUpdate);
-// 	}
-
-// 	private _compile() {
-// 		return compileTemplatePug(this._template, this.props);
-// 	}
-
-// 	private _componentDidMount() {
-// 		this.componentDidMount?.();
-// 	}
-
-// 	private _componentDidUpdate() {
-// 		this.componentDidUpdate?.();
-
-// 		this.props.children?.forEach((child) => child.componentDidUpdate?.());
-// 	}
-
-// 	private _addEventListener() {
-// 		if (!this.props.events) {
-// 			return;
-// 		}
-
-// 		Object.entries(this.props.events).forEach(([eventName, listener]) => {
-// 			this.element.addEventListener(eventName, listener);
-// 		});
-// 	}
-
-// 	private _removeEventListener() {
-// 		if (!this.props.events) {
-// 			return;
-// 		}
-
-// 		Object.entries(this.props.events).forEach(([eventName, listener]) => {
-// 			this.element.removeEventListener(eventName, listener);
-// 		});
-// 	}
-
-// 	public setProps(nextProps: Partial<T>) {
-// 		if (!nextProps) {
-// 			return;
-// 		}
-
-// 		Object.assign(this.props, nextProps);
-// 	}
-
-// 	public get element() {
-// 		return this._element;
-// 	}
-
-// 	protected componentDidMount?(): void;
-// 	protected componentDidUpdate?(): void;
-// }
-
 import Template from '../utils/template';
 import EventBus from './event-bus';
 
-import type { Listeners, Type } from '../types';
+import getElementByAttribute from '../utils/get-element-by-attribute';
 
-type EventName = keyof typeof Component.eventName;
-export type Children = Record<string, Type<Component>>;
+import type { Constructor } from '../types';
+
+enum EventName {
+	render = 'render',
+	rerender = 'rerender',
+	componentDidMount = 'componentDidMount',
+	componentDidUpdate = 'componentDidUpdate',
+}
+export type Children = Record<string, Constructor<Component>>;
+type Event = {
+	name: keyof HTMLElementEventMap,
+	listener: EventListener
+};
+export type Events = Event[];
 export type DefaultProps = { children?: string };
 export type DefaultState = Record<string, unknown>;
 
@@ -137,46 +24,38 @@ export default abstract class Component<
 	P extends DefaultProps = DefaultProps,
 	S extends DefaultState = DefaultState
 > {
-	static readonly eventName = {
-		render: 'render',
-		rerender: 'rerender',
-		componentDidMount: 'componentDidMount',
-		componentDidUpdate: 'componentDidUpdate',
-	} as const;
-
 	private readonly eventBus = new EventBus<EventName>();
 	protected props: P;
 	protected state: S;
 	private readonly _children: Children;
-	private readonly _listeners: Listeners;
+	private readonly _events: Events;
 	private _element: HTMLElement;
-	private _template: Element;
 
-	constructor(props = {} as P, { state = {} as S, children = {}, listeners = {} } = {}) {
-		this.props = props;
-		this.state = this._makeStateProxy(state);
+	constructor(props = {} as P, { state = {} as S, children = {}, events = [] } = {}) {
+		this.props = this._makeDataProxy(props);
+		this.state = this._makeDataProxy(state);
 
 		this._children = children;
-		this._listeners = listeners;
+		this._events = events;
 
 		this._registerEvents();
 
-		this.eventBus.emite(Component.eventName.render);
+		this.eventBus.emite(EventName.render);
 	}
 
 	private _registerEvents() {
-		this.eventBus.on(Component.eventName.render, this._render.bind(this));
-		this.eventBus.on(Component.eventName.rerender, this._rerender.bind(this));
-		this.eventBus.on(Component.eventName.componentDidMount, this._componentDidMount.bind(this));
-		this.eventBus.on(Component.eventName.componentDidUpdate, this._componentDidUpdate.bind(this));
+		this.eventBus.on(EventName.render, this._render.bind(this));
+		this.eventBus.on(EventName.rerender, this._rerender.bind(this));
+		this.eventBus.on(EventName.componentDidMount, this._componentDidMount.bind(this));
+		this.eventBus.on(EventName.componentDidUpdate, this._componentDidUpdate.bind(this));
 	}
 
-	private _makeStateProxy(state: S) {
-		return new Proxy(state, {
+	private _makeDataProxy<T extends Record<string, unknown>>(state: T) {
+		return new Proxy<T>(state, {
 			set: (target, key, value) => {
-				if (target[key as keyof S] !== value) {
-					target[key as keyof S] = value;
-					this.eventBus.emite(Component.eventName.rerender);
+				if (!Object.is(target[key as keyof T], value)) {
+					target[key as keyof T] = value;
+					this.eventBus.emite(EventName.rerender);
 
 					return true;
 				}
@@ -186,21 +65,47 @@ export default abstract class Component<
 		});
 	}
 
-	private _render() {
-		this._template = this._compile();
-		this._element = Template.toDOM(this._template);
+	protected _render() {
+		this._element = this._compile();
 
-		this.eventBus.emite(Component.eventName.componentDidMount);
+		this._addEventListeners();
+
+		this.eventBus.emite(EventName.componentDidMount);
 	}
 
 	private _rerender() {
-		this._template = this._compile();
+		this._removeEventListeners();
 
-		const newElement = Template.toDOM(this._template);
+		const newElement = this._compile();
 		this._element.replaceWith(newElement);
 		this._element = newElement;
 
-		this.eventBus.emite(Component.eventName.componentDidUpdate);
+		this._addEventListeners();
+
+		this.eventBus.emite(EventName.componentDidUpdate);
+	}
+
+	private _addEventListeners() {
+		this.getEvents().forEach((event) => {
+			const { name, listener } = event;
+			const element = getElementByAttribute(this.element, name, listener.name.replace('bound ', ''));
+
+			if (element) {
+				element.removeAttribute(name);
+				element.addEventListener(name, listener);
+			}
+		});
+	}
+
+	private _removeEventListeners() {
+		this.getEvents().forEach((event) => {
+			const { name, listener } = event;
+			const element = getElementByAttribute(this.element, name, listener.name.replace('bound ', ''));
+
+			if (element) {
+				element.removeEventListener(name, listener);
+			}
+		});
 	}
 
 	private _componentDidMount() {
@@ -212,7 +117,7 @@ export default abstract class Component<
 	}
 
 	private _compile() {
-		return Template.compile(this.render(), this.getChildren(), this.getListeners());
+		return Template.compile(this.render(), this.getChildren(), this.getEvents());
 	}
 
 	public getChildren() {
@@ -221,22 +126,22 @@ export default abstract class Component<
 		return { ...children, ...this._children };
 	}
 
-	public getListeners() {
-		const events = this.listeners?.() || {};
+	public getEvents() {
+		const events = this.events?.() || [];
 
-		return { ...events, ...this._listeners };
+		return [...events, ...this._events];
 	}
 
 	public get element() {
 		return this._element;
 	}
 
-	public get template() {
-		return this._template;
+	protected setProps(nextProps: Partial<P>) {
+		Object.assign(this.props, nextProps);
 	}
 
 	protected children?(): Children;
-	protected listeners?(): Listeners;
+	protected events?(): Events;
 	protected componentDidMount?(): void;
 	protected componentDidUpdate?(): void;
 

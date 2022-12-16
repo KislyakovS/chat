@@ -1,22 +1,38 @@
-import Component from '../../core/component';
+import Page from '../../core/page';
 
 import {
- User, Search, Dialogs, Messages,
+ User, Search, Messages,
 } from './components';
+
+import Dialogs from '../../modules/dialogs';
 import { SendMessageForm } from '../../modules/forms';
 
-export default class Messager extends Component {
+import { profileController } from '../../controllers';
+import { Routes } from '../../constants';
+
+export default class Messager extends Page {
+	get meta() {
+		return {
+			title: 'Messager',
+			description: 'You messager.',
+		};
+	}
+
 	protected children() {
 		return {
  User, Search, Dialogs, Messages, SendMessageForm,
 };
 	}
 
+	protected componentDidMount(): void {
+		profileController.requestProfile();
+	}
+
 	render() {
 		return `
 		<div class="messager">
 			<aside class="messager__aside">
-				<User name="Alexandr" />
+				<User name="Alexandr" href="${Routes.profile}" />
 				<div class="messager__search">
 					<Search />
 				</div>

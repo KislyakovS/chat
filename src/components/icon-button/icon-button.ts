@@ -1,6 +1,12 @@
 import Component from '../../core/component';
 
-export default class IconButton extends Component {
+type Props = {
+	onClick: string,
+	icon: 'arrow-left' | 'arrow-right',
+	children: never,
+}
+
+export default class IconButton extends Component<Props> {
 	getIcon() {
 		switch (this.props.icon) {
 			case 'arrow-left':
@@ -13,8 +19,10 @@ export default class IconButton extends Component {
 	}
 
 	render() {
+		const { onClick } = this.props;
+
 		return `
-		<button class="button button_round">
+		<button click="${onClick}" class="button button_round">
 			${this.getIcon()}
 		</button>
 		`;

@@ -3,14 +3,15 @@ import Component from '../../../../core/component';
 import { Avatar } from '../../../../components';
 
 import clsx from '../../../../utils/clsx';
+import connect from '../../../../utils/connect';
 
-export default class Details extends Component {
+class Details extends Component {
 	protected children() {
 		return { Avatar };
 	}
 
 	render() {
-		const { className } = this.props;
+		const { className, user = {} } = this.props;
 
 		const cls = clsx('details', className);
 
@@ -20,30 +21,32 @@ export default class Details extends Component {
 			<ul class="list">
 				<li class="d-flex f-jc-sb">
 					<span>Email</span>
-					<span class="details__value">pochta@yandex.ru</span>
+					<span class="details__value">${user.email ?? '-'}</span>
 				</li>
 				<li class="d-flex f-jc-sb">
 					<span>Login</span>
-					<span class="details__value">ivanivanov</span>
+					<span class="details__value">${user.login ?? '-'}</span>
 				</li>
 				<li class="d-flex f-jc-sb">
 					<span>Name</span>
-					<span class="details__value">ivan</span>
+					<span class="details__value">${user.first_name ?? '-'}</span>
 				</li>
 				<li class="d-flex f-jc-sb">
 					<span>Last name</span>
-					<span class="details__value">ivanov</span>
+					<span class="details__value">${user.second_name ?? '-'}</span>
 				</li>
 				<li class="d-flex f-jc-sb">
 					<span>Name in chat</span>
-					<span class="details__value">ivan-2000</span>
+					<span class="details__value">${user.display_name ?? '-'}</span>
 				</li>
 				<li class="d-flex f-jc-sb">
 					<span>Phone</span>
-					<span class="details__value">+7 (909) 967 30 30</span>
+					<span class="details__value">${user.phone ?? '-'}</span>
 				</li>
 			</ul>
 		</div>
 		`;
 	}
 }
+
+export default connect(Details, (state) => ({ user: state.user }));

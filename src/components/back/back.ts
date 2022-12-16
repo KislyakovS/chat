@@ -1,17 +1,28 @@
-import Component from '../../core/component';
+import Component, { Events } from '../../core/component';
+import router from '../../core/router';
 
 import IconButton from '../icon-button';
 
 export default class Back extends Component {
-	protected children() {
-		return { IconButton };
-	}
+  private _onClickBack(e: Event) {
+    e.preventDefault();
 
-	render() {
-		return `
+    router.back();
+  }
+
+  protected children() {
+    return { IconButton };
+  }
+
+  protected events(): Events {
+    return [{ name: 'click', listener: this._onClickBack }];
+  }
+
+  render() {
+    return `
 		<div class="back">
-			<IconButton icon="arrow-left" />
+			<IconButton onClick="${this._onClickBack.name}" icon="arrow-left" />
 		</div>
 		`;
-	}
+  }
 }

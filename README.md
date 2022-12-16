@@ -10,6 +10,7 @@ npm install
 ```
 PORT = /* the port on which the server will be started */
 STATIC_DIR_NAME = /* name of the folder with static files */
+CLIENT_API_URL = /* base url for api */
 ```
 
 ## Deployment

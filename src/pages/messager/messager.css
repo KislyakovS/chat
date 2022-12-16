@@ -9,6 +9,7 @@
 		flex-direction: column;
 		gap: var(--inset);
 		padding: var(--inset);
+		width: 300px;
 
 		border-right: 1px solid var(--divider-color);
 	}

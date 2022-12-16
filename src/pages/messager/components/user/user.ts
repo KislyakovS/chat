@@ -1,18 +1,20 @@
 import Component from '../../../../core/component';
 
-import { Avatar } from '../../../../components';
+import { Avatar, Link } from '../../../../components';
 
 export default class User extends Component {
 	protected children() {
-		return { Avatar };
+		return { Avatar, Link };
 	}
 
 	render() {
+		const { name, href } = this.props;
+
 		return `
-		<a class="user">
+		<Link className="user" href="${href}">
 			<Avatar size="35px" />
-			<span>${this.props.name}</span>
-		</a>
+			<span>${name}</span>
+		</Link>
 		`;
 	}
 }

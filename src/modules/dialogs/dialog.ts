@@ -1,8 +1,15 @@
-import Component from '../../../../core/component';
+import Component from '../../core/component';
 
-import { Avatar } from '../../../../components';
+import { Avatar } from '../../components';
 
-export default class Dialog extends Component {
+type Props = {
+	name: string,
+	message: string,
+	count: number,
+	children: never,
+}
+
+export default class Dialog extends Component<Props> {
 	protected children() {
 		return { Avatar };
 	}
