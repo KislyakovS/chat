@@ -3,7 +3,7 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(/static/fonts/Inter-Medium.ttf)
+    src: url(../../public/fonts/Inter-Medium.ttf)
 }
 
 @font-face {
@@ -11,5 +11,5 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(/static/fonts/Inter-SemiBold.ttf)
+    src: url(../..//public/fonts/Inter-SemiBold.ttf)
 }

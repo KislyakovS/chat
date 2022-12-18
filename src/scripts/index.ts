@@ -9,11 +9,11 @@ import { Routes } from '../constants';
 const app = document.querySelector('#app');
 
 if (!app) {
-  throw new Error('No root element by id `app`')
+  throw new Error('No root element by id `app`');
 }
 
-if (process.env.CLIENT_API_URL) {
-  http.setup({ baseURL: process.env.CLIENT_API_URL });
+if (import.meta.env.CLIENT_API_URL) {
+  http.setup({ baseURL: import.meta.env.CLIENT_API_URL });
 }
 
 router

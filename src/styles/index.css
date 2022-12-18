@@ -1,5 +1,5 @@
 /* Core */
-@import '../../static/style/normalize.css';
+@import '../..//public/style/normalize.css';
 @import './fonts.css';
 @import './variables.css';
 @import './global.css';
