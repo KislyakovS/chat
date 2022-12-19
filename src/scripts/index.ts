@@ -1,10 +1,10 @@
 import {
   SignUp, Login, Messager, ProfileChange, PasswordChange, Profile, NotFound,
-} from '../pages';
-import router from '../core/router';
-import http from '../core/http';
+} from '@/pages';
+import router from '@/core/router';
+import http from '@/core/http';
 
-import { Routes } from '../constants';
+import { Routes } from '@/constants';
 
 const app = document.querySelector('#app');
 

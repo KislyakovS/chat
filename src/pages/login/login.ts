@@ -1,7 +1,7 @@
-import Page from '../../core/page';
+import Page from '@/core/page';
 
-import { Box, Link } from '../../components';
-import { LoginForm } from '../../modules/forms';
+import { Box, Link } from '@/components';
+import { LoginForm } from '@/modules/forms';
 
 export default class Login extends Page {
 	get meta() {

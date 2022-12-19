@@ -1,8 +1,8 @@
-import Page from '../../core/page';
+import Page from '@/core/page';
 
-import { Profile as Layout } from '../../layouts';
+import { Profile as Layout } from '@/layouts';
 
-import { PasswordChangeForm } from '../../modules/forms';
+import { PasswordChangeForm } from '@/modules/forms';
 
 export default class PasswordChange extends Page {
 	get meta() {

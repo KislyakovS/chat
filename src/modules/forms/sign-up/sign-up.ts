@@ -1,12 +1,12 @@
-import Component, { Events } from '../../../core/component';
+import Component, { Events } from '@/core/component';
 
 import {
 	Form, Field, Button, ErrorMessage,
-} from '../../../components';
+} from '@/components';
 
-import { signUpController } from '../../../controllers';
+import { signUpController } from '@/controllers';
 
-import formSerialize from '../../../utils/form-serialize';
+import formSerialize from '@/utils/form-serialize';
 
 export type SignUpModel = {
 	first_name: string,

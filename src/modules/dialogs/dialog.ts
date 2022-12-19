@@ -1,6 +1,6 @@
-import Component from '../../core/component';
+import Component from '@/core/component';
 
-import { Avatar } from '../../components';
+import { Avatar } from '@/components';
 
 type Props = {
 	name: string,

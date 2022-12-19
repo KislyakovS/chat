@@ -1,12 +1,12 @@
-import Component, { Events } from '../../../core/component';
+import Component, { Events } from '@/core/component';
 
 import {
 	Form, Field, Button, ErrorMessage,
-} from '../../../components';
+} from '@/components';
 
-import { passwordChangeController } from '../../../controllers';
+import { passwordChangeController } from '@/controllers';
 
-import formSerialize from '../../../utils/form-serialize';
+import formSerialize from '@/utils/form-serialize';
 
 export type PasswordChangeModel = {
 	oldPassword: string,

@@ -1,5 +1,5 @@
-import Component, { Events } from '../../core/component';
-import router from '../../core/router';
+import Component, { Events } from '@/core/component';
+import router from '@/core/router';
 
 import IconButton from '../icon-button';
 

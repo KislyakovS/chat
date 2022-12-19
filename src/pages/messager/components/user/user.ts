@@ -1,6 +1,6 @@
-import Component from '../../../../core/component';
+import Component from '@/core/component';
 
-import { Avatar, Link } from '../../../../components';
+import { Avatar, Link } from '@/components';
 
 export default class User extends Component {
 	protected children() {

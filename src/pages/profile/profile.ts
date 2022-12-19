@@ -1,6 +1,6 @@
-import Page from '../../core/page';
+import Page from '@/core/page';
 
-import { Profile as Layout } from '../../layouts';
+import { Profile as Layout } from '@/layouts';
 
 import { Details, Navigation } from './components';
 

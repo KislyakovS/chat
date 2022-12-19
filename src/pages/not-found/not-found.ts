@@ -1,6 +1,6 @@
-import Page from '../../core/page';
+import Page from '@/core/page';
 
-import { ErrorMessagePage } from '../../components';
+import { ErrorMessagePage } from '@/components';
 
 export default class NotFound extends Page {
 	get meta() {

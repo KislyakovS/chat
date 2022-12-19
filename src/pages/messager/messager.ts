@@ -1,14 +1,14 @@
-import Page from '../../core/page';
+import Page from '@/core/page';
 
 import {
  User, Search, Messages,
 } from './components';
 
-import Dialogs from '../../modules/dialogs';
-import { SendMessageForm } from '../../modules/forms';
+import Dialogs from '@/modules/dialogs';
+import { SendMessageForm } from '@/modules/forms';
 
-import { profileController } from '../../controllers';
-import { Routes } from '../../constants';
+import { profileController } from '@/controllers';
+import { Routes } from '@/constants';
 
 export default class Messager extends Page {
 	get meta() {

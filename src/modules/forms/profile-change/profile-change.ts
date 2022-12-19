@@ -1,12 +1,12 @@
-import Component, { Events } from '../../../core/component';
+import Component, { Events } from '@/core/component';
 
 import {
  Form, ChangeAvatar, Field, Button, ErrorMessage,
-} from '../../../components';
+} from '@/components';
 
-import { profileChangeController } from '../../../controllers';
+import { profileChangeController } from '@/controllers';
 
-import formSerialize from '../../../utils/form-serialize';
+import formSerialize from '@/utils/form-serialize';
 
 export type ProfileChangeModel = {
 	first_name: string,

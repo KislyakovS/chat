@@ -1,9 +1,9 @@
-import Component, { Events } from '../../core/component';
-import router from '../../core/router';
+import Component, { Events } from '@/core/component';
+import router from '@/core/router';
 
-import clsx from '../../utils/clsx';
+import clsx from '@/utils/clsx';
 
-import type { Path } from '../../types';
+import type { Path } from '@/types';
 
 type Props = {
 	className?: string,

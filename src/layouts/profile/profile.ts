@@ -1,6 +1,6 @@
-import Component from '../../core/component';
+import Component from '@/core/component';
 
-import { Back } from '../../components';
+import { Back } from '@/components';
 
 export default class Profile extends Component {
 	protected children() {

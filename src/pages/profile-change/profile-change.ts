@@ -1,8 +1,8 @@
-import Page from '../../core/page';
+import Page from '@/core/page';
 
-import { Profile as Layout } from '../../layouts';
+import { Profile as Layout } from '@/layouts';
 
-import { ProfileChangeForm } from '../../modules/forms';
+import { ProfileChangeForm } from '@/modules/forms';
 
 export default class ProfileChange extends Page {
 	get meta() {

@@ -1,8 +1,8 @@
-import Component from '../../core/component';
+import Component from '@/core/component';
 
 import Avatar from '../avatar';
 
-import clsx from '../../utils/clsx';
+import clsx from '@/utils/clsx';
 
 export default class ChangeAvatar extends Component {
 	protected children() {

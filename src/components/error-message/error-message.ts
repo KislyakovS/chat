@@ -1,6 +1,6 @@
-import Component from '../../core/component';
+import Component from '@/core/component';
 
-import clsx from '../../utils/clsx';
+import clsx from '@/utils/clsx';
 
 type Props = {
 	className?: string,

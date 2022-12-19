@@ -1,8 +1,8 @@
-import Component from '../../../../core/component';
+import Component from '@/core/component';
 
 import Message from './message';
 
-import clsx from '../../../../utils/clsx';
+import clsx from '@/utils/clsx';
 
 export default class Messages extends Component {
 	protected children() {

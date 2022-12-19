@@ -1,9 +1,9 @@
-import Component, { Events } from '../../../../core/component';
+import Component, { Events } from '@/core/component';
 
-import { Link, Button } from '../../../../components';
+import { Link, Button } from '@/components';
 
-import { logoutController } from '../../../../controllers';
-import { Routes } from '../../../../constants';
+import { logoutController } from '@/controllers';
+import { Routes } from '@/constants';
 
 export default class Navigation extends Component {
 	private async _onClickButtonExit(e: Event) {

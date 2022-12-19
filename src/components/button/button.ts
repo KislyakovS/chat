@@ -1,8 +1,8 @@
-import Component from '../../core/component';
+import Component from '@/core/component';
 
-import clsx from '../../utils/clsx';
+import clsx from '@/utils/clsx';
 
-import type { ButtonType } from '../../types';
+import type { ButtonType } from '@/types';
 
 type Style = 'default' | 'link' | 'link-accent';
 

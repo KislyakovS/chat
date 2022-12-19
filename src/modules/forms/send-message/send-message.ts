@@ -1,6 +1,6 @@
-import Component from '../../../core/component';
+import Component from '@/core/component';
 
-import { Form, Field, IconButton } from '../../../components';
+import { Form, Field, IconButton } from '@/components';
 
 export default class SendMessageForm extends Component {
 	onSubmit(e: Event) {

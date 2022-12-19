@@ -1,13 +1,13 @@
-import Component, { Events } from '../../../core/component';
+import Component, { Events } from '@/core/component';
 
 import {
 	Form, Field, Button, ErrorMessage,
-} from '../../../components';
+} from '@/components';
 
-import { loginController } from '../../../controllers';
+import { loginController } from '@/controllers';
 
-import formSerialize from '../../../utils/form-serialize';
-import connect from '../../../utils/connect';
+import formSerialize from '@/utils/form-serialize';
+import connect from '@/utils/connect';
 
 export type LoginModel = {
 	login: string,

@@ -1,9 +1,9 @@
-import Component from '../../../../core/component';
+import Component from '@/core/component';
 
-import { Avatar } from '../../../../components';
+import { Avatar } from '@/components';
 
-import clsx from '../../../../utils/clsx';
-import connect from '../../../../utils/connect';
+import clsx from '@/utils/clsx';
+import connect from '@/utils/connect';
 
 class Details extends Component {
 	protected children() {

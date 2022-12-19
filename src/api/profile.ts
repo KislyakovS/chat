@@ -1,8 +1,8 @@
-import http from '../core/http';
+import http from '@/core/http';
 
-import type { User, ErrorResponse } from '../types';
-import type { ProfileChangeModel } from '../modules/forms/profile-change';
-import type { PasswordChangeModel } from '../modules/forms/password-change';
+import type { User, ErrorResponse } from '@/types';
+import type { ProfileChangeModel } from '@/modules/forms/profile-change';
+import type { PasswordChangeModel } from '@/modules/forms/password-change';
 
 class ProfileAPI {
 	public get() {
