@@ -1,4 +1,11 @@
-import { defineConfig, ServerOptions, BuildOptions } from 'vite';
+import {
+	defineConfig, ServerOptions, BuildOptions, AliasOptions,
+} from 'vite';
+import path from 'path';
+
+interface ResolveOptions {
+	alias?: AliasOptions
+}
 
 const server: ServerOptions = {
 	open: true,
@@ -9,10 +16,17 @@ const build: BuildOptions = {
 	emptyOutDir: true,
 };
 
+const resolve: ResolveOptions = {
+	alias: {
+		'@': path.resolve(__dirname, './src'),
+	},
+};
+
 export default defineConfig({
 	root: './src',
-	envDir: '../',
+	envDir: __dirname,
 	envPrefix: 'CLIENT_',
 	server,
 	build,
+	resolve,
 });
