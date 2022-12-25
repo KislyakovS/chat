@@ -1,0 +1,99 @@
+.dialogs {
+	overflow-y: auto;
+}
+
+.dialog {
+    position: relative;
+
+    padding: 10px;
+    /* width: 300px; */
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+        background-color: #e4edfd;
+    }
+
+    &_selected {
+        color: var(--second-color);
+
+        background-color: var(--accent-color);
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--accent-color);
+        }
+    }
+
+    &__avatar {
+		width: 50px;
+		height: 50px;
+        margin-right: 10px;
+    }
+
+    &__header {
+        margin-bottom: 5px;
+    }
+
+    &__preview {
+        margin: 0px 40px 0px 0px;
+
+        font-size: 14px;
+        color: var(--dark-gray-color);
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    &_selected &__preview {
+        color: var(--second-color);
+    }
+
+    &__name {
+        font-weight: 600;
+    }
+
+    &__time {
+        margin-left: 15px;
+
+        font-size: var(--small-font-size);
+        color: var(--dark-gray-color);
+    }
+
+    &_selected &__time {
+        color: var(--second-color);
+    }
+
+    &__bage {
+        --size: 23px;
+
+        position: absolute;
+        top: 50%;
+        right: 10px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: var(--size);
+        height: var(--size);
+
+        font-size: var(--small-font-size);
+        color: var(--second-color);
+
+        background-color: var(--accent-color);
+        border-radius: 50%;
+		transform: translate(0px,-50%);
+    }
+
+    &_selected &__bage {
+        color: var(--accent-color);
+
+        background-color: var(--second-color);
+    }
+}

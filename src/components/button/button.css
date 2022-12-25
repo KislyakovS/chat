@@ -2,6 +2,7 @@
     padding: 12px;
 
     color: var(--second-color);
+	text-decoration: none;
 
     background-color: var(--accent-color);
     border: none;
@@ -27,4 +28,23 @@
 
         border-radius: 50%;
     }
+
+	&_link, &_link-accent {
+		padding: 0px;
+
+		font-size: var(--small-font-size);
+    	color: var(--accent-color);
+
+		background-color: transparent;
+
+		&:hover {
+			text-decoration: underline;
+
+			background-color: transparent;
+		}
+	}
+
+	&_link-accent {
+		color: var(--second-accent-color);
+	}
 }

@@ -10,6 +10,7 @@ npm install
 ```
 PORT = /* the port on which the server will be started */
 STATIC_DIR_NAME = /* name of the folder with static files */
+CLIENT_API_URL = /* base url for api */
 ```
 
 ## Deployment
@@ -22,6 +23,18 @@ npm run build
 Start production server:
 ```sh
 npm run start
+```
+
+Lint:
+```sh
+npm run lint
+
+npm run lint:fix
+```
+
+Cleaning the folder `build`:
+```sh
+npm run clear:build
 ```
 
 ## Development

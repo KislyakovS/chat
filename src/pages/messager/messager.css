@@ -1,0 +1,47 @@
+.messager {
+	--inset: 10px;
+
+	display: flex;
+	height: 100vh;
+
+	&__aside {
+		display: flex;
+		flex-direction: column;
+		gap: var(--inset);
+		padding: var(--inset);
+		width: 300px;
+
+		border-right: 1px solid var(--divider-color);
+	}
+
+	&__search {
+		padding-bottom: var(--inset);
+
+		border-bottom: 1px solid var(--divider-color);
+	}
+
+	&__chat {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		padding: var(--inset);
+	}
+
+	&__header {
+		padding-bottom: var(--inset);
+		border-bottom: 1px solid var(--divider-color);
+	}
+
+	&__main {
+		display: flex;
+		flex-direction: column-reverse;
+		padding: var(--inset) 0px;
+		height: 100%;
+	}
+
+	&__footer {
+		padding-top: 11px;
+
+		border-top: 1px solid var(--divider-color);
+	}
+}

@@ -1,0 +1,13 @@
+.user {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	color: var(--primary-color);
+	font-size: var(--primary-font-size);
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: none;
+	}
+}

@@ -1,8 +1,0 @@
-include ../h1/h1.pug
-include ../link/link.pug
-
-mixin errorPageMessage(status, message)
-    .error-page-message&attributes(attributes)
-        span.error-page-message__status= status
-        +h1.error-page-message__message= message
-        +link(href='/') Back to chats
